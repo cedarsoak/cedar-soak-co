@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCta from "@/components/StickyCta";
@@ -7,6 +8,19 @@ export const metadata: Metadata = {
   title: "Gallery | Cedar Soak Co.",
   description: "See Cedar Soak Co.'s handcrafted cedar hot tubs set up in backyards around Dayton, Ohio.",
 };
+
+const GALLERY_IMAGES = [
+  { src: "/gallery/gallery-10.jpg", alt: "Aerial view of the steaming cedar hot tub at dusk with string lights" },
+  { src: "/gallery/gallery-01.jpg", alt: "Cedar Soak hot tub deck set up at dusk with string lights" },
+  { src: "/gallery/gallery-02.jpg", alt: "Cedar hot tub with wood-fire stove chimney at dusk" },
+  { src: "/gallery/gallery-03.jpg", alt: "Cedar hot tub steps and privacy fencing" },
+  { src: "/gallery/gallery-04.jpg", alt: "Close view of the cedar hot tub's stainless bands" },
+  { src: "/gallery/gallery-05.jpg", alt: "Cedar hot tub trailer setup in the evening" },
+  { src: "/gallery/gallery-06.jpg", alt: "Cedar hot tub deck seating with lanterns and pillows" },
+  { src: "/gallery/gallery-07.jpg", alt: "Cedar hot tub lid and stovepipe detail" },
+  { src: "/gallery/gallery-08.jpg", alt: "Cedar hot tub deck entrance at dusk" },
+  { src: "/gallery/gallery-09.jpg", alt: "Cedar hot tub deck ambiance with string lights" },
+];
 
 export default function GalleryPage() {
   return (
@@ -22,13 +36,11 @@ export default function GalleryPage() {
 
       <section>
         <div className="wrap">
-          <div className="gallery-note">
-            This page is holding placeholder tiles until real photos are in hand — swap these out
-            for actual setup photos as soon as they&apos;re available.
-          </div>
           <div className="gallery-full-grid">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <div className="g-item" key={i}></div>
+            {GALLERY_IMAGES.map((img) => (
+              <div className="g-item" key={img.src}>
+                <Image src={img.src} alt={img.alt} fill className="g-item-img" sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" />
+              </div>
             ))}
           </div>
         </div>
