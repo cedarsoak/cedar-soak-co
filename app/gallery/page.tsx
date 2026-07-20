@@ -1,0 +1,68 @@
+import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import StickyCta from "@/components/StickyCta";
+import GalleryLightbox from "@/components/GalleryLightbox";
+
+export const metadata: Metadata = {
+  title: "Gallery | Cedar Soak Co.",
+  description: "See Cedar Soak Co.'s handcrafted cedar hot tubs set up in backyards around Dayton, Ohio.",
+};
+
+const GALLERY_IMAGES = [
+  { src: "/gallery/full/gallery-10.jpg", alt: "Aerial view of the steaming cedar hot tub at dusk with string lights" },
+  { src: "/gallery/full/gallery-01.jpg", alt: "Cedar Soak hot tub deck set up at dusk with string lights" },
+  { src: "/gallery/full/gallery-02.jpg", alt: "Cedar hot tub with wood-fire stove chimney at dusk" },
+  { src: "/gallery/full/gallery-03.jpg", alt: "Cedar hot tub steps and privacy fencing" },
+  { src: "/gallery/full/gallery-04.jpg", alt: "Close view of the cedar hot tub's stainless bands" },
+  { src: "/gallery/full/gallery-05.jpg", alt: "Cedar hot tub trailer setup in the evening" },
+  { src: "/gallery/full/gallery-06.jpg", alt: "Cedar hot tub deck seating with lanterns and pillows" },
+  { src: "/gallery/full/gallery-07.jpg", alt: "Cedar hot tub lid and stovepipe detail" },
+  { src: "/gallery/full/gallery-08.jpg", alt: "Cedar hot tub deck entrance at dusk" },
+  { src: "/gallery/full/gallery-09.jpg", alt: "Cedar hot tub deck ambiance with string lights" },
+];
+
+export default function GalleryPage() {
+  return (
+    <>
+      <Header />
+      <section className="page-hero">
+        <div className="wrap">
+          <span className="eyebrow">Gallery</span>
+          <h1>See it in a backyard near you.</h1>
+          <p>A look at real Cedar Soak setups — string lights, cedar steam, and quiet evenings. Tap any photo for a closer look.</p>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <GalleryLightbox images={GALLERY_IMAGES} />
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="price-band">
+            <div className="left">
+              <span className="eyebrow" style={{ color: "var(--ember-light)" }}>
+                Ready to book?
+              </span>
+              <div className="big-num">
+                $747<sup>/ 3 nights</sup>
+              </div>
+              <p>Every escape includes delivery, setup, a personal walkthrough, and pickup.</p>
+            </div>
+            <div className="right">
+              <a href="/#book" className="btn btn-primary">
+                Request to book
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+      <StickyCta />
+    </>
+  );
+}
