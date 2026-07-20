@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroVideo from "@/components/HeroVideo";
@@ -305,10 +306,18 @@ export default function HomePage() {
             </a>
           </div>
           <div className="gallery-grid reveal">
-            <div className="g-item"></div>
-            <div className="g-item"></div>
-            <div className="g-item"></div>
-            <div className="g-item"></div>
+            <div className="g-item">
+              <Image src="/gallery/gallery-10.jpg" alt="Aerial view of the steaming cedar hot tub at dusk with string lights" fill className="g-item-img" sizes="(max-width: 640px) 100vw, 50vw" />
+            </div>
+            <div className="g-item">
+              <Image src="/gallery/gallery-02.jpg" alt="Cedar hot tub with wood-fire stove chimney" fill className="g-item-img" sizes="(max-width: 640px) 50vw, 25vw" />
+            </div>
+            <div className="g-item">
+              <Image src="/gallery/gallery-01.jpg" alt="Cedar Soak hot tub deck set up at dusk with string lights" fill className="g-item-img" sizes="(max-width: 640px) 50vw, 25vw" />
+            </div>
+            <div className="g-item">
+              <Image src="/gallery/gallery-06.jpg" alt="Cedar hot tub deck seating area with lanterns and pillows" fill className="g-item-img" sizes="(max-width: 640px) 100vw, 50vw" />
+            </div>
           </div>
         </div>
       </section>
