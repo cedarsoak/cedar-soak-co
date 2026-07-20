@@ -39,7 +39,7 @@ export default function GalleryPage() {
           <div className="gallery-full-grid">
             {GALLERY_IMAGES.map((img) => (
               <div className="g-item" key={img.src}>
-                <Image src={img.src} alt={img.alt} fill className="g-item-img" sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                <Image src={img.src} alt={img.alt} fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw" />
               </div>
             ))}
           </div>
