@@ -143,9 +143,9 @@ export default function HeroVideo() {
         <div className="hero-content">
           <span className="eyebrow">Dayton, Ohio &middot; Mobile Delivery</span>
           <h1>
-            Escape without
+            Soak
             <br />
-            leaving home<span style={{ color: "var(--ember-light)" }}>.</span>
+            in the moment<span style={{ color: "var(--ember-light)" }}>.</span>
           </h1>
           <EmberLine className="hero-ember-line" />
           <p className="sub">
