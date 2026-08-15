@@ -274,6 +274,42 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ============ CRAFTSMANSHIP ============ */}
+      <section>
+        <div className="wrap">
+          <div className="editorial-row reveal">
+            <div className="photo-stack">
+              <div className="stack-back">
+                <Image
+                  src="/gallery/gallery-08.jpg"
+                  alt="Cedar hot tub deck entrance at dusk"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 900px) 70vw, 30vw"
+                />
+              </div>
+              <div className="stack-front">
+                <Image
+                  src="/gallery/gallery-04.jpg"
+                  alt="Close view of the cedar hot tub's stainless bands"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 900px) 45vw, 18vw"
+                />
+              </div>
+            </div>
+            <div className="editorial-copy">
+              <span className="eyebrow">Built to last</span>
+              <h2>Handcrafted, banded, and built for the backyard.</h2>
+              <p>
+                Every Cedar Soak tub is built from solid cedar staves and wrapped in stainless bands,
+                then wood-fired to a perfect soak. It&apos;s the same craftsmanship you&apos;d find at
+                a boutique mountain retreat &mdash; just delivered to your own backyard.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* ============ OCCASIONS ============ */}
       <section className="section-pine on-dark" style={{ padding: "64px 0" }}>
         <div className="wrap">
