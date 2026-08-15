@@ -1,25 +1,25 @@
-  :root{
-    --cedar-charcoal:#221812;
-    --cedar-charcoal-2:#2B1F17;
-    --bark:#3E2A1E;
-    --bark-light:#5A3F2C;
-    --ember:#C97C3D;
-    --ember-light:#E0A468;
-    --ember-dark:#9C5A26;
-    --pine:#3A4A34;
-    --pine-light:#4E6350;
-    --mist:#EFEBE1;
-    --mist-2:#E4DFD1;
-    --water:#4E6B72;
-    --text-dark:#1E1712;
-    --text-soft:#5B5147;
-    --text-light:#F5F1E8;
-    --text-light-soft:#CFC6B7;
-    --radius-sm:6px;
-    --radius-md:14px;
-    --radius-lg:28px;
+:root{
+    --cedar-charcoal:#0D0D0D;
+    --cedar-charcoal-2:#161616;
+    --bark:#1A1A1A;
+    --bark-light:#2B2B2B;
+    --ember:#AC8A46;
+    --ember-light:#C7A868;
+    --ember-dark:#8B6A3B;
+    --pine:#0D0D0D;
+    --pine-light:#1A1A1A;
+    --mist:#FFFFFF;
+    --mist-2:#F5F3EF;
+    --water:#AC8A46;
+    --text-dark:#111111;
+    --text-soft:#5C5C5C;
+    --text-light:#FFFFFF;
+    --text-light-soft:#D8D8D8;
+    --radius-sm:2px;
+    --radius-md:2px;
+    --radius-lg:4px;
     --container:1180px;
-    --shadow-card: 0 20px 40px -24px rgba(34,24,18,0.35);
+    --shadow-card: 0 20px 40px -24px rgba(0,0,0,0.18);
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
