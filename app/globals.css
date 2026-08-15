@@ -235,18 +235,13 @@
     0%{ transform:scale(1); }
     100%{ transform:scale(1.09); }
   }
-  .hero-overlay{
+.hero-overlay{
     position:absolute; inset:0;
     z-index:1;
     background:
-      linear-gradient(180deg, rgba(26,18,13,0.4) 0%, rgba(26,18,13,0.05) 28%, rgba(26,18,13,0.2) 58%, rgba(18,13,9,0.82) 100%),
-      radial-gradient(120% 90% at 10% 0%, rgba(201,124,61,0.22), transparent 55%),
-      radial-gradient(70% 55% at 90% 100%, rgba(58,74,52,0.32), transparent 60%);
-    pointer-events:none;
-  }
-  .hero-embers{
-    position:absolute; inset:0;
-    z-index:2;
+      linear-gradient(180deg, rgba(17,17,17,0.22) 0%, rgba(17,17,17,0.02) 30%, rgba(17,17,17,0.1) 58%, rgba(17,17,17,0.55) 100%),
+      radial-gradient(120% 90% at 10% 0%, rgba(172,138,70,0.16), transparent 55%),
+      radial-gradient(70% 55% at 90% 100%, rgba(172,138,70,0.12), transparent 60%);
     pointer-events:none;
   }
   .hero .wrap{ position:relative; z-index:3; width:100%; }
@@ -316,10 +311,11 @@
 
   /* ============ QUICK CAPTURE ============ */
   .quick-capture{
-    background:var(--cedar-charcoal-2);
+    background:var(--mist);
     padding:38px 0;
     position:relative;
     z-index:4;
+    box-shadow:0 12px 30px -18px rgba(0,0,0,0.25);
   }
   .quick-capture .wrap{
     display:flex;
@@ -330,12 +326,12 @@
   }
   .quick-capture .qc-copy{ max-width:340px; }
   .quick-capture .qc-copy h3{
-    color:var(--text-light);
+    color:var(--text-dark);
     font-size:20px;
     margin-bottom:6px;
   }
   .quick-capture .qc-copy p{
-    color:var(--text-light-soft);
+    color:var(--text-soft);
     font-size:14px;
   }
   form.quick-form{
@@ -349,25 +345,25 @@
   form.quick-form input{
     flex:1;
     min-width:150px;
-    border:1px solid rgba(245,241,232,0.18);
-    background:rgba(245,241,232,0.06);
-    color:var(--text-light);
+    border:1px solid rgba(17,17,17,0.14);
+    background:var(--mist-2);
+    color:var(--text-dark);
     border-radius:var(--radius-sm);
     padding:13px 16px;
     font-family: var(--font-work-sans), sans-serif;
     font-size:15px;
   }
-  form.quick-form input::placeholder{ color:var(--text-light-soft); }
+  form.quick-form input::placeholder{ color:var(--text-soft); }
   form.quick-form input:focus{
     outline:none;
     border-color:var(--ember);
-    background:rgba(245,241,232,0.1);
+    background:#FFFFFF;
   }
   form.quick-form button{ flex-shrink:0; white-space:nowrap; }
   .quick-capture .qc-fineprint{
     width:100%;
     font-size:12px;
-    color:var(--text-light-soft);
+    color:var(--text-soft);
     margin-top:2px;
   }
   @media (max-width:900px){
@@ -379,16 +375,15 @@
     form.quick-form input, form.quick-form button{ width:100%; }
   }
   .qc-success{
-    background:rgba(224,164,104,0.1);
-    border:1px solid rgba(224,164,104,0.35);
+    background:var(--mist-2);
+    border:1px solid rgba(172,138,70,0.35);
     border-radius:var(--radius-sm);
     padding:16px 20px;
     max-width:620px;
     flex:1;
   }
-  .qc-success h3{ color:var(--text-light); font-size:17px; margin-bottom:4px; }
-  .qc-success p{ color:var(--text-light-soft); font-size:14px; }
-
+  .qc-success h3{ color:var(--text-dark); font-size:17px; margin-bottom:4px; }
+  .qc-success p{ color:var(--text-soft); font-size:14px; }
   .price-chip{
     display:inline-flex;
     align-items:baseline;
