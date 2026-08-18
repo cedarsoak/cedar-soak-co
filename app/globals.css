@@ -450,13 +450,14 @@
     color:var(--ember);
   }
 
-  /* ============ SECTION GENERIC ============ */
+    /* ============ SECTION GENERIC ============ */
   section{ padding:96px 0; }
   .section-head{ max-width:640px; margin-bottom:56px; }
   .section-head h2{ font-size:clamp(30px, 4vw, 46px); margin-top:14px; }
   .section-head .sub{ color:var(--text-soft); font-size:17px; margin-top:16px; max-width:520px; }
   .section-dark{ background:var(--cedar-charcoal); }
   .section-pine{ background:var(--pine); }
+  .section-sky{ background:var(--sky); }
 
   /* ============ HOW IT WORKS ============ */
   .steps{
@@ -503,7 +504,9 @@
     gap:20px;
   }
   .heat-card{
-    background:var(--bark);
+    background:#FFFFFF;
+    border:1px solid rgba(17,17,17,0.06);
+    box-shadow:var(--shadow-card);
     border-radius:var(--radius-md);
     padding:34px 28px;
     position:relative;
@@ -516,22 +519,22 @@
   .heat-card::before{
     content:"";
     position:absolute; top:0; left:0; right:0; height:100%;
-    background:radial-gradient(120% 100% at 10% 0%, rgba(201,124,61,0.28), transparent 60%);
+    background:radial-gradient(120% 100% at 10% 0%, rgba(172,138,70,0.14), transparent 60%);
   }
   .heat-card .icon{
     width:42px; height:42px;
     margin-bottom:44px;
     position:relative; z-index:1;
   }
-  .heat-card h3{ color:var(--text-light); font-size:22px; margin-bottom:10px; position:relative; z-index:1; }
-  .heat-card p{ color:var(--text-light-soft); font-size:14.5px; position:relative; z-index:1; }
+  .heat-card h3{ color:var(--text-dark); font-size:22px; margin-bottom:10px; position:relative; z-index:1; }
+  .heat-card p{ color:var(--text-soft); font-size:14.5px; position:relative; z-index:1; }
   .heat-card .tag{
     position:relative; z-index:1;
     font-family: var(--font-plex-mono), monospace;
     font-size:11px;
     letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--ember-light);
+    color:var(--ember);
     margin-bottom:12px;
   }
 
