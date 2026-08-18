@@ -212,11 +212,13 @@
     /* ============ HERO ============ */
   .hero{
     position:relative;
-    min-height:100svh;
+    height:84vh;
+    min-height:560px;
+    max-height:820px;
     display:flex;
     align-items:flex-end;
     padding-top:120px;
-    padding-bottom:64px;
+    padding-bottom:48px;
     background:var(--mist);
     overflow:hidden;
   }
@@ -247,9 +249,22 @@
       radial-gradient(70% 55% at 90% 100%, rgba(172,138,70,0.12), transparent 60%);
     pointer-events:none;
   }
+  .hero-embers{
+    position:absolute; inset:0;
+    z-index:2;
+    pointer-events:none;
+  }
+  @media (max-width:1024px){
+    .hero{ height:74vh; min-height:520px; padding-top:104px; }
+  }
   @media (max-width:768px){
     .hero-media, .hero-overlay{ inset:0 3%; }
-  }  .hero .wrap{ position:relative; z-index:3; width:100%; }
+    .hero{ height:66vh; min-height:460px; max-height:640px; padding-top:88px; padding-bottom:32px; }
+    .hero-content h1{ font-size:clamp(32px, 9vw, 46px); }
+    .hero-content .sub{ margin:14px 0 20px; }
+    .hero-content .trust-strip{ display:none; }
+  }
+  .hero .wrap{ position:relative; z-index:3; width:100%; }
   .hero-content{ max-width:640px; }
   .hero-content .eyebrow{ margin-bottom:22px; }
   .hero-content h1{
