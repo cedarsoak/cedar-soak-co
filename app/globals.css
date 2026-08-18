@@ -97,25 +97,27 @@
     .scroll-cue svg{ animation:none; }
   }
 
-  /* ============ HEADER ============ */
+    /* ============ HEADER ============ */
   header{
     position:fixed; top:0; left:0; right:0;
     z-index:100;
     padding:20px 0;
+    background:var(--mist);
+    box-shadow:0 1px 0 rgba(17,17,17,0.08);
     transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
   }
   header .wrap{ display:flex; align-items:center; justify-content:space-between; }
   header.scrolled{
-    background:rgba(34,24,18,0.92);
+    background:var(--mist);
     backdrop-filter:blur(10px);
     padding:12px 0;
-    box-shadow:0 8px 24px -12px rgba(0,0,0,0.4);
+    box-shadow:0 8px 24px -16px rgba(17,17,17,0.18);
   }
   .logo{
     font-family: var(--font-fraunces), serif;
     font-weight:600;
     font-size:21px;
-    color:var(--text-light);
+    color:var(--text-dark);
     letter-spacing:0.01em;
     display:flex;
     align-items:center;
@@ -128,13 +130,13 @@
   nav.primary-nav{ display:flex; align-items:center; gap:36px; }
   nav.primary-nav a{
     font-size:14px;
-    color:var(--text-light-soft);
+    color:var(--text-soft);
     font-weight:500;
     position:relative;
     padding:4px 0;
     transition:color .25s ease;
   }
-  nav.primary-nav a:hover{ color:var(--text-light); }
+  nav.primary-nav a:hover{ color:var(--text-dark); }
   nav.primary-nav a::after{
     content:"";
     position:absolute; left:0; bottom:-2px;
@@ -164,17 +166,17 @@
   }
   .hamburger span{
     position:absolute; left:0; right:0; height:2px;
-    background:var(--text-light);
+    background:var(--text-dark);
     border-radius:2px;
     transition:all .3s ease;
   }
+  .hamburger.open span{ background:var(--text-light); }
   .hamburger span:nth-child(1){ top:0; }
   .hamburger span:nth-child(2){ top:10px; }
   .hamburger span:nth-child(3){ top:20px; }
   .hamburger.open span:nth-child(1){ transform:translateY(10px) rotate(45deg); }
   .hamburger.open span:nth-child(2){ opacity:0; }
   .hamburger.open span:nth-child(3){ transform:translateY(-10px) rotate(-45deg); }
-
   .mobile-menu{
     position:fixed; inset:0;
     background:var(--cedar-charcoal);
