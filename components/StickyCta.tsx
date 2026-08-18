@@ -6,8 +6,8 @@ export default function StickyCta() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const hero = document.querySelector(".hero") as HTMLElement | null;
-    const threshold = hero ? hero.offsetTop + hero.offsetHeight : 400;
+        const anchor = document.querySelector(".quick-capture") as HTMLElement | null;
+    const threshold = anchor ? anchor.offsetTop + anchor.offsetHeight : 600;
 
     const onScroll = () => setShow(window.scrollY > threshold);
     window.addEventListener("scroll", onScroll, { passive: true });
