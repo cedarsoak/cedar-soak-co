@@ -315,8 +315,11 @@
   @media (max-width:640px){ .scroll-cue{ display:none; } }
 
   /* ============ QUICK CAPTURE ============ */
-  .quick-capture{
-    background:var(--mist);
+    .quick-capture{
+    background-color:var(--mist);
+    background-image:
+      repeating-linear-gradient(60deg, rgba(172,138,70,0.10) 0px, rgba(172,138,70,0.10) 1px, transparent 1px, transparent 46px),
+      repeating-linear-gradient(-60deg, rgba(172,138,70,0.10) 0px, rgba(172,138,70,0.10) 1px, transparent 1px, transparent 46px);
     padding:38px 0;
     position:relative;
     z-index:4;
