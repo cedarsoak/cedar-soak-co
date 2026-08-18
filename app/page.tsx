@@ -221,12 +221,12 @@ export default function HomePage() {
       </section>
 
       {/* ============ HEAT OPTIONS ============ */}
-      <section id="heat" className="section-dark on-dark">
+           <section id="heat" className="section-sky">
         <div className="wrap">
           <div className="section-head reveal">
             <span className="eyebrow">Choose your heat</span>
             <h2>Wood fire, electric, or both.</h2>
-            <p className="sub" style={{ color: "var(--text-light-soft)" }}>
+            <p className="sub">
               Every rental is built the same way &mdash; how you bring it to temperature is up to you.
             </p>
           </div>
