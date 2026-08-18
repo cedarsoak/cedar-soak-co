@@ -19,9 +19,9 @@
     --radius-md:2px;
     --radius-lg:4px;
     --container:1180px;
-    --shadow-card: 0 20px 40px -24px rgba(0,0,0,0.18);
-  }
+        --shadow-card: 0 20px 40px -24px rgba(0,0,0,0.18);
     --sky:#E9F1FA;
+  }
 
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
