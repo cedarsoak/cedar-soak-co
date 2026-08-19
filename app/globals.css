@@ -258,11 +258,12 @@
     .hero{ height:74vh; min-height:520px; padding-top:104px; }
   }
   @media (max-width:768px){
-    .hero-media, .hero-overlay{ inset:0 3%; }
+    .hero-media, .hero-overlay{ inset:0; }
     .hero{ height:66vh; min-height:460px; max-height:640px; padding-top:88px; padding-bottom:32px; }
     .hero-content h1{ font-size:clamp(32px, 9vw, 46px); }
     .hero-content .sub{ margin:14px 0 20px; }
     .hero-content .trust-strip{ display:none; }
+  }
   }
   .hero .wrap{ position:relative; z-index:3; width:100%; }
   .hero-content{ max-width:640px; }
