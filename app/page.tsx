@@ -312,10 +312,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/* ============ OCCASIONS ============ */}
-      <section className="section-pine on-dark" style={{ padding: "64px 0" }}>
+            {/* ============ OCCASIONS ============ */}
+      <section className="section-sky" style={{ padding: "64px 0" }}>
         <div className="wrap">
-          <span className="eyebrow" style={{ color: "var(--ember-light)", marginBottom: 20, display: "inline-flex" }}>
+          <span className="eyebrow" style={{ color: "var(--ember)", marginBottom: 20, display: "inline-flex" }}>
             Perfect for
           </span>
           <div className="occasion-scroll" style={{ marginTop: 18 }}>
