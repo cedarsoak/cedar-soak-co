@@ -449,7 +449,12 @@
     color:var(--text-light);
     border:1px solid rgba(245,241,232,0.35);
   }
-  .btn-ghost:hover{ border-color:var(--text-light); transform:translateY(-2px); }
+    .btn-ghost:hover{ border-color:var(--text-light); transform:translateY(-2px); }
+  .btn-white{
+    background:#FFFFFF;
+    color:var(--text-dark);
+  }
+  .btn-white:hover{ background:var(--mist-2); transform:translateY(-2px); }
 
   .trust-strip{
     font-family: var(--font-plex-mono), monospace;
@@ -626,9 +631,9 @@
   }
   .g-item:hover .g-item-img{ transform:scale(1.04); }
 
-  /* ============ PRICE BAND ============ */
+    /* ============ PRICE BAND ============ */
   .price-band{
-    background:linear-gradient(120deg, var(--cedar-charcoal) 0%, var(--bark) 100%);
+    background:var(--sky);
     border-radius:var(--radius-lg);
     padding:64px 48px;
     display:flex;
@@ -640,23 +645,20 @@
     overflow:hidden;
   }
   .price-band::before{
-    content:"";
-    position:absolute; top:-40%; right:-10%;
-    width:420px; height:420px;
-    background:radial-gradient(circle, rgba(201,124,61,0.35), transparent 70%);
+    content:none;
   }
   .price-band .left{ position:relative; z-index:1; max-width:460px; }
   .price-band .big-num{
     font-family: var(--font-fraunces), serif;
     font-size:clamp(48px, 7vw, 84px);
-    color:var(--text-light);
+    color:var(--text-dark);
     line-height:1;
     display:flex;
     align-items:baseline;
     gap:10px;
   }
-  .price-band .big-num sup{ font-size:0.35em; color:var(--ember-light); font-family: var(--font-plex-mono), monospace; }
-  .price-band p{ color:var(--text-light-soft); margin-top:14px; font-size:15.5px; }
+  .price-band .big-num sup{ font-size:0.35em; color:var(--ember); font-family: var(--font-plex-mono), monospace; }
+  .price-band p{ color:var(--text-soft); margin-top:14px; font-size:15.5px; }
   .price-band .right{ position:relative; z-index:1; }
 
   /* ============ FORM ============ */
