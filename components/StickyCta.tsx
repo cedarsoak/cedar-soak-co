@@ -6,10 +6,12 @@ export default function StickyCta() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-        const anchor = document.querySelector(".quick-capture") as HTMLElement | null;
-    const threshold = anchor ? anchor.offsetTop + anchor.offsetHeight : 600;
+    const getThreshold = () => {
+      const anchor = document.querySelector("#how-it-works") as HTMLElement | null;
+      return anchor ? anchor.offsetTop : 600;
+    };
 
-    const onScroll = () => setShow(window.scrollY > threshold);
+    const onScroll = () => setShow(window.scrollY > getThreshold());
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
