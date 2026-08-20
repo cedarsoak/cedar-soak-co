@@ -373,8 +373,8 @@ export default function HomePage() {
               </div>
               <p>Every escape includes delivery, setup, a personal walkthrough, and pickup. No hidden fees, no plumbing required.</p>
             </div>
-            <div className="right">
-              <a href="#book" className="btn btn-primary">
+                        <div className="right">
+              <a href="#book" className="btn btn-white">
                 Request to book
               </a>
             </div>
