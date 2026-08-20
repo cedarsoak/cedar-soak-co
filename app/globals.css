@@ -538,9 +538,14 @@
     position:absolute; top:0; left:0; right:0; height:100%;
     background:radial-gradient(120% 100% at 10% 0%, rgba(172,138,70,0.14), transparent 60%);
   }
-  .heat-card .icon{
-    width:42px; height:42px;
-    margin-bottom:44px;
+    .heat-card .icon{
+    width:86px; height:86px;
+    padding:22px;
+    box-sizing:border-box;
+    margin-bottom:28px;
+    background: radial-gradient(circle at 30% 30%, rgba(172,138,70,0.16), rgba(172,138,70,0.05));
+    border:1px solid rgba(172,138,70,0.28);
+    border-radius:50%;
     position:relative; z-index:1;
   }
   .heat-card h3{ color:var(--text-dark); font-size:22px; margin-bottom:10px; position:relative; z-index:1; }
