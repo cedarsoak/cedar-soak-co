@@ -533,10 +533,10 @@
     flex-direction:column;
     justify-content:flex-end;
   }
-  .heat-card::before{
+    .heat-card::before{
     content:"";
     position:absolute; top:0; left:0; right:0; height:100%;
-    background:radial-gradient(120% 100% at 10% 0%, rgba(172,138,70,0.14), transparent 60%);
+    background:none;
   }
     .heat-card .icon{
     width:86px; height:86px;
