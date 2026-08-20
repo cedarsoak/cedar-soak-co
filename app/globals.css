@@ -213,8 +213,7 @@
     /* ============ HERO ============ */
   .hero{
     position:relative;
-    height:84vh;
-    min-height:560px;
+    min-height:max(84vh, 560px);
     max-height:820px;
     display:flex;
     align-items:flex-end;
@@ -256,11 +255,11 @@
     pointer-events:none;
   }
   @media (max-width:1024px){
-    .hero{ height:74vh; min-height:520px; padding-top:104px; }
+    .hero{ min-height:max(74vh, 520px); padding-top:104px; }
   }
   @media (max-width:768px){
     .hero-media, .hero-overlay{ inset:0; }
-    .hero{ height:66vh; min-height:460px; max-height:640px; padding-top:88px; padding-bottom:32px; }
+    .hero{ min-height:max(66vh, 460px); padding-top:88px; padding-bottom:32px; }
     .hero-content h1{ font-size:clamp(32px, 9vw, 46px); }
     .hero-content .sub{ margin:14px 0 20px; }
     .hero-content .trust-strip{ display:none; }
