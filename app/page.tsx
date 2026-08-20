@@ -6,6 +6,7 @@ import QuickCaptureForm from "@/components/QuickCaptureForm";
 import BookingForm from "@/components/BookingForm";
 import StickyCta from "@/components/StickyCta";
 import ScrollReveal from "@/components/ScrollReveal";
+import PhotoCarousel from "@/components/PhotoCarousel";
 
 const STEPS = [
   {
@@ -298,6 +299,7 @@ export default function HomePage() {
                 />
               </div>
             </div>
+                        <PhotoCarousel />
             <div className="editorial-copy">
               <span className="eyebrow">Built to last</span>
               <h2>Handcrafted, banded, and built for the backyard.</h2>
