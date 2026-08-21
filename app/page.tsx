@@ -194,59 +194,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ HOW IT WORKS ============ */}
-      <section id="how-it-works">
-        <div className="wrap">
-          <div className="section-head reveal">
-            <span className="eyebrow">The process</span>
-            <h2>Five steps between you and the water.</h2>
-            <p className="sub">
-              No plumbing, no permits, no guesswork &mdash; we handle the setup so your weekend starts the moment we
-              drive away.
-            </p>
-          </div>
-
-          <div className="steps">
-            {STEPS.map((step, i) => (
-              <div className="step reveal" key={step.num}>
-                {i < STEPS.length - 1 && <div className="step-line"></div>}
-                <div className="step-num">{step.num}</div>
-                <div className="step-body">
-                  <h3>{step.title}</h3>
-                  <p>{step.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ HEAT OPTIONS ============ */}
-           <section id="heat" className="section-sky">
-        <div className="wrap">
-          <div className="section-head reveal">
-            <span className="eyebrow">Choose your heat</span>
-            <h2>Wood fire, electric, or both.</h2>
-            <p className="sub">
-              Every rental is built the same way &mdash; how you bring it to temperature is up to you.
-            </p>
-          </div>
-
-          <div className="heat-grid">
-            {HEAT_OPTIONS.map((opt) => (
-              <div className="heat-card reveal" key={opt.title}>
-                <svg className="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  {opt.icon}
-                </svg>
-                <span className="tag">{opt.tag}</span>
-                <h3>{opt.title}</h3>
-                <p>{opt.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ============ WHY CEDAR SOAK ============ */}
       <section id="why">
         <div className="wrap">
@@ -269,6 +216,33 @@ export default function HomePage() {
                 </div>
                 <h3>{card.title}</h3>
                 <p>{card.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ HOW IT WORKS ============ */}
+      <section id="how-it-works">
+        <div className="wrap">
+          <div className="section-head reveal">
+            <span className="eyebrow">The process</span>
+            <h2>Five steps between you and the water.</h2>
+            <p className="sub">
+              No plumbing, no permits, no guesswork &mdash; we handle the setup so your weekend starts the moment we
+              drive away.
+            </p>
+          </div>
+
+          <div className="steps">
+            {STEPS.map((step, i) => (
+              <div className="step reveal" key={step.num}>
+                {i < STEPS.length - 1 && <div className="step-line"></div>}
+                <div className="step-num">{step.num}</div>
+                <div className="step-body">
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -378,6 +352,32 @@ export default function HomePage() {
                 Request to book
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ HEAT OPTIONS ============ */}
+           <section id="heat" className="section-sky">
+        <div className="wrap">
+          <div className="section-head reveal">
+            <span className="eyebrow">Choose your heat</span>
+            <h2>Wood fire, electric, or both.</h2>
+            <p className="sub">
+              Every rental is built the same way &mdash; how you bring it to temperature is up to you.
+            </p>
+          </div>
+
+          <div className="heat-grid">
+            {HEAT_OPTIONS.map((opt) => (
+              <div className="heat-card reveal" key={opt.title}>
+                <svg className="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  {opt.icon}
+                </svg>
+                <span className="tag">{opt.tag}</span>
+                <h3>{opt.title}</h3>
+                <p>{opt.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
