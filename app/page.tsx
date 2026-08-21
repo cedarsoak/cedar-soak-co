@@ -7,7 +7,7 @@ import BookingForm from "@/components/BookingForm";
 import StickyCta from "@/components/StickyCta";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhotoCarousel from "@/components/PhotoCarousel";
-import WhyCarousel from "@/components/WhyCarousel";
+import PhotoCardCarousel from "@/components/PhotoCardCarousel";
 
 const STEPS = [
   {
@@ -118,7 +118,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <WhyCarousel cards={WHY_CARDS} />
+          <PhotoCardCarousel cards={WHY_CARDS} />
         </div>
       </section>
 
@@ -267,15 +267,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="heat-grid">
-            {HEAT_OPTIONS.map((opt) => (
-              <div className="heat-card reveal" key={opt.title}>
-                <span className="tag">{opt.tag}</span>
-                <h3>{opt.title}</h3>
-                <p>{opt.body}</p>
-              </div>
-            ))}
-          </div>
+          <PhotoCardCarousel cards={HEAT_OPTIONS} />
         </div>
       </section>
 
