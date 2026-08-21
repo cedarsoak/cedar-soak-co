@@ -259,7 +259,9 @@
   }
   @media (max-width:768px){
     .hero-media, .hero-overlay{ inset:0; }
-    .hero{ min-height:max(66vh, 460px); padding-top:88px; padding-bottom:32px; }
+    /* Video-only hero on mobile, sized so it plus the quick-capture form both fit above the fold */
+    .hero{ height:clamp(260px, 40vh, 380px); min-height:0; max-height:none; padding:0; }
+    .hero-content, .scroll-cue{ display:none; }
     .hero-content h1{ font-size:clamp(32px, 9vw, 46px); }
     .hero-content .sub{ margin:14px 0 20px; }
     .hero-content .trust-strip{ display:none; }
