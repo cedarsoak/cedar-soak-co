@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import DateRangePicker from "./DateRangePicker";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -74,10 +75,7 @@ export default function BookingForm() {
         </div>
       </div>
       <div className="field-row">
-        <div className="field">
-          <label htmlFor="dates">Preferred dates</label>
-          <input type="text" id="dates" name="dates" placeholder="e.g. Aug 15–18" />
-        </div>
+        <DateRangePicker name="dates" label="Preferred dates" />
         <div className="field">
           <label htmlFor="heat-select">Heat preference</label>
           <select id="heat-select" name="heatPreference" defaultValue="Wood-fire">
