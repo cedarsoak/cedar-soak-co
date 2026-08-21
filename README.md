@@ -5,7 +5,7 @@ Next.js 16 (App Router) + TypeScript site for Cedar Soak Co., built for deployme
 ## What's in here
 
 - `app/page.tsx` — homepage (hero video, quick-capture form, how it works, heat options, why cedar soak, occasions, gallery teaser, pricing, full booking form)
-- `app/gallery`, `app/hot-tub-faqs`, `app/contact-cedar-soak` — the other three pages. Gallery uses placeholder tiles until real photos are ready; FAQs and Contact are content-complete.
+- `app/gallery`, `app/hot-tub-faqs`, `app/contact-cedar-soak` — the other three pages. Gallery shows real photos in a lightbox; FAQs and Contact are content-complete.
 - `app/api/contact` and `app/api/book` — serverless routes that email form submissions via Resend
 - `components/` — all the reusable pieces (header, footer, hero video, forms, etc.)
 - `app/globals.css` — all styling, ported directly from the approved design
@@ -75,7 +75,6 @@ Any push to the `main` branch on GitHub automatically triggers a new deployment 
 
 ## Still to do
 
-- Swap the placeholder gallery tiles for real photos
 - Swap the logo mark (currently an inline SVG droplet) for your real logo once you send it over
 - Verify the `cedarsoak.co` domain in Resend for branded "from" addresses
 - When ready, route the quick-capture form's list into Mailchimp instead of (or alongside) the email notification
