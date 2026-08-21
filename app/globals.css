@@ -519,53 +519,18 @@
   .step-body h3{ font-size:21px; margin-bottom:8px; font-weight:600; }
   .step-body p{ color:var(--text-soft); font-size:15.5px; max-width:480px; }
 
-  /* ============ HEAT CARDS ============ */
-  .heat-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:20px;
-  }
-  .heat-card{
-    background:#FFFFFF;
-    border:1px solid rgba(17,17,17,0.06);
-    box-shadow:var(--shadow-card);
-    border-radius:var(--radius-md);
-    padding:34px 28px;
-    position:relative;
-    overflow:hidden;
-    min-height:260px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-  }
-    .heat-card::before{
-    content:"";
-    position:absolute; top:0; left:0; right:0; height:100%;
-    background:none;
-  }
-  .heat-card h3{ color:var(--text-dark); font-size:22px; margin-bottom:10px; position:relative; z-index:1; }
-  .heat-card p{ color:var(--text-soft); font-size:14.5px; position:relative; z-index:1; }
-  .heat-card .tag{
-    position:relative; z-index:1;
-    font-family: var(--font-plex-mono), monospace;
-    font-size:11px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--ember);
-    margin-bottom:12px;
-  }
-
-  /* ============ WHY CAROUSEL ============ */
-  .why-carousel{ position:relative; }
-  .why-track{
+  /* ============ PHOTO CARD CAROUSEL ============ */
+  /* Shared by the Why Cedar Soak and Choose Your Heat sections */
+  .card-carousel{ position:relative; }
+  .cc-track{
     display:flex;
     overflow-x:auto;
     scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch;
     scrollbar-width:none;
   }
-  .why-track::-webkit-scrollbar{ display:none; }
-  .why-slide{
+  .cc-track::-webkit-scrollbar{ display:none; }
+  .cc-slide{
     flex:0 0 100%;
     scroll-snap-align:start;
     display:flex;
@@ -573,7 +538,7 @@
     align-items:center;
     padding-bottom:56px;
   }
-  .why-slide-media{
+  .cc-slide-media{
     position:relative;
     width:100%;
     max-width:520px;
@@ -582,21 +547,21 @@
     overflow:hidden;
     box-shadow:var(--shadow-card);
   }
-  .why-photo-placeholder{
+  .cc-photo-placeholder{
     position:absolute; inset:0;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:10px;
     background:linear-gradient(160deg, var(--mist-2), rgba(172,138,70,0.12));
     color:var(--ember);
   }
-  .why-photo-placeholder span{
+  .cc-photo-placeholder span{
     font-family: var(--font-plex-mono), monospace;
     font-size:11px;
     letter-spacing:0.08em;
     text-transform:uppercase;
     color:var(--text-soft);
   }
-  .why-slide-content{
+  .cc-slide-content{
     position:relative;
     width:calc(100% - 48px);
     max-width:440px;
@@ -609,15 +574,24 @@
     padding:26px 28px;
     z-index:1;
   }
-  .why-slide-content h3{ font-size:19px; margin-bottom:8px; }
-  .why-slide-content p{ color:var(--text-soft); font-size:14.5px; }
+  .cc-slide-content .tag{
+    display:block;
+    font-family: var(--font-plex-mono), monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ember);
+    margin-bottom:12px;
+  }
+  .cc-slide-content h3{ font-size:19px; margin-bottom:8px; }
+  .cc-slide-content p{ color:var(--text-soft); font-size:14.5px; }
 
-  .why-nav{
+  .cc-nav{
     display:flex; align-items:center; gap:16px;
     max-width:520px;
     margin:0 auto;
   }
-  .why-arrow{
+  .cc-arrow{
     flex-shrink:0;
     width:36px; height:36px;
     border-radius:50%;
@@ -628,9 +602,9 @@
     cursor:pointer;
     transition:background .2s ease, opacity .2s ease;
   }
-  .why-arrow:hover:not(:disabled){ background:var(--mist-2); }
-  .why-arrow:disabled{ opacity:0.35; cursor:not-allowed; }
-  .why-progress{
+  .cc-arrow:hover:not(:disabled){ background:var(--mist-2); }
+  .cc-arrow:disabled{ opacity:0.35; cursor:not-allowed; }
+  .cc-progress{
     position:relative;
     flex:1;
     height:2px;
@@ -638,13 +612,13 @@
     border-radius:2px;
     overflow:hidden;
   }
-  .why-progress-fill{
+  .cc-progress-fill{
     position:absolute; top:0; left:0; bottom:0;
     background:var(--ember);
     border-radius:2px;
     transition:transform .3s ease;
   }
-  .why-count{
+  .cc-count{
     text-align:center;
     margin-top:14px;
     font-family: var(--font-plex-mono), monospace;
@@ -951,7 +925,6 @@
   @media (max-width: 980px){
     nav.primary-nav, .nav-cta{ display:none; }
     .hamburger{ display:block; }
-    .heat-grid{ grid-template-columns:1fr; }
     .form-wrap{ grid-template-columns:1fr; }
     .footer-top{ grid-template-columns:1fr 1fr; }
     .price-band{ padding:44px 28px; }

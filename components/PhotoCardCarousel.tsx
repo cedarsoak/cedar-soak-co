@@ -2,14 +2,15 @@
 
 import { useRef, useState } from "react";
 
-type WhyCard = {
+type CarouselCard = {
+  tag?: string;
   title: string;
   body: string;
 };
 
 function PhotoPlaceholder() {
   return (
-    <div className="why-photo-placeholder">
+    <div className="cc-photo-placeholder">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <rect x="3" y="4.5" width="18" height="15" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
         <circle cx="8.5" cy="10" r="1.6" stroke="currentColor" strokeWidth="1.4" />
@@ -26,7 +27,7 @@ function PhotoPlaceholder() {
   );
 }
 
-export default function WhyCarousel({ cards }: { cards: WhyCard[] }) {
+export default function PhotoCardCarousel({ cards }: { cards: CarouselCard[] }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
@@ -45,14 +46,15 @@ export default function WhyCarousel({ cards }: { cards: WhyCard[] }) {
   };
 
   return (
-    <div className="why-carousel">
-      <div className="why-track" ref={trackRef} onScroll={handleScroll}>
+    <div className="card-carousel">
+      <div className="cc-track" ref={trackRef} onScroll={handleScroll}>
         {cards.map((card) => (
-          <div className="why-slide" key={card.title}>
-            <div className="why-slide-media">
+          <div className="cc-slide" key={card.title}>
+            <div className="cc-slide-media">
               <PhotoPlaceholder />
             </div>
-            <div className="why-slide-content">
+            <div className="cc-slide-content">
+              {card.tag && <span className="tag">{card.tag}</span>}
               <h3>{card.title}</h3>
               <p>{card.body}</p>
             </div>
@@ -60,10 +62,10 @@ export default function WhyCarousel({ cards }: { cards: WhyCard[] }) {
         ))}
       </div>
 
-      <div className="why-nav">
+      <div className="cc-nav">
         <button
           type="button"
-          className="why-arrow"
+          className="cc-arrow"
           aria-label="Previous"
           onClick={() => goTo(active - 1)}
           disabled={active === 0}
@@ -73,9 +75,9 @@ export default function WhyCarousel({ cards }: { cards: WhyCard[] }) {
           </svg>
         </button>
 
-        <div className="why-progress">
+        <div className="cc-progress">
           <div
-            className="why-progress-fill"
+            className="cc-progress-fill"
             style={{
               width: `${100 / cards.length}%`,
               transform: `translateX(${active * 100}%)`,
@@ -85,7 +87,7 @@ export default function WhyCarousel({ cards }: { cards: WhyCard[] }) {
 
         <button
           type="button"
-          className="why-arrow"
+          className="cc-arrow"
           aria-label="Next"
           onClick={() => goTo(active + 1)}
           disabled={active === cards.length - 1}
@@ -96,7 +98,7 @@ export default function WhyCarousel({ cards }: { cards: WhyCard[] }) {
         </button>
       </div>
 
-      <div className="why-count">
+      <div className="cc-count">
         {active + 1} / {cards.length}
       </div>
     </div>
