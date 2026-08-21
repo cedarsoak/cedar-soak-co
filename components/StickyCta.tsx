@@ -7,7 +7,7 @@ export default function StickyCta() {
 
   useEffect(() => {
     const getThreshold = () => {
-      const anchor = document.querySelector("#how-it-works") as HTMLElement | null;
+      const anchor = document.querySelector("#why") as HTMLElement | null;
       return anchor ? anchor.offsetTop : 600;
     };
 
