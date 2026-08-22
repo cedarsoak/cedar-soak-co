@@ -14,6 +14,8 @@ export async function POST(request: Request) {
       location,
       message,
       website,
+      promoCode,
+      source,
     } = body as {
       firstName?: string;
       lastName?: string;
@@ -24,6 +26,8 @@ export async function POST(request: Request) {
       location?: string;
       message?: string;
       website?: string; // honeypot field
+      promoCode?: string;
+      source?: string;
     };
 
     if (website) {
@@ -54,8 +58,9 @@ export async function POST(request: Request) {
         "Preferred dates": dates,
         "Heat preference": heatPreference,
         "Delivery location": location,
+        "Promo code": promoCode,
         Message: message,
-        Source: "Homepage Request to Book form",
+        Source: source || "Homepage Request to Book form",
       }),
     });
 

@@ -5,7 +5,12 @@ import DateRangePicker from "./DateRangePicker";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function BookingForm() {
+type BookingFormProps = {
+  promoCode?: string;
+  source?: string;
+};
+
+export default function BookingForm({ promoCode, source }: BookingFormProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -29,6 +34,8 @@ export default function BookingForm() {
           location: formData.get("location"),
           message: formData.get("message"),
           website: formData.get("website"), // honeypot
+          promoCode,
+          source,
         }),
       });
       const data = await res.json();
@@ -102,6 +109,12 @@ export default function BookingForm() {
         style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
         aria-hidden="true"
       />
+      {promoCode && (
+        <div className="promo-applied">
+          Promo code <span className="code">{promoCode}</span>{" "}
+          is applied — you&apos;ll get one additional night free.
+        </div>
+      )}
       {status === "error" && (
         <p style={{ color: "var(--ember)", fontSize: 14, marginBottom: 14 }}>{errorMessage}</p>
       )}
