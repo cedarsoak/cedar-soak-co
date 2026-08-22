@@ -1219,6 +1219,8 @@
   .afterglow-scope .cc-arrow{ color:var(--blush-deep); }
   .afterglow-scope .cc-progress-fill{ background:var(--blush-deep); }
   .afterglow-scope .trust-strip span:not(:last-child)::after{ color:var(--blush-deep); }
+  .afterglow-scope .price-band{ background:var(--blush-light); }
+  .afterglow-scope .price-band .big-num sup{ color:var(--blush-deep); }
 
   .afterglow-header{
     background:var(--mist);
@@ -1319,6 +1321,21 @@
     letter-spacing:0.04em;
     color:var(--blush-deep);
   }
+
+  /* ============ GIFT BAND ============ */
+  .gift-band{
+    background:#fff;
+    border:1px solid rgba(185,124,110,0.25);
+    border-radius:var(--radius-lg);
+    padding:56px 48px;
+    text-align:center;
+    max-width:720px;
+    margin:0 auto;
+  }
+  .gift-band .eyebrow{ justify-content:center; }
+  .gift-band h2{ margin-top:14px; font-size:clamp(28px, 3.6vw, 40px); }
+  .gift-band p{ color:var(--text-soft); margin-top:16px; font-size:16px; max-width:560px; margin-left:auto; margin-right:auto; }
+  .gift-band .cta-row{ justify-content:center; margin:28px 0 0; }
 
   /* ============ PROMO CODE BADGE (booking form) ============ */
   .promo-applied{

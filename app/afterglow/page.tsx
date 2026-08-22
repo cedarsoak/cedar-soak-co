@@ -8,7 +8,7 @@ import PhotoCardCarousel from "@/components/PhotoCardCarousel";
 export const metadata: Metadata = {
   title: "The Afterglow | A Newlywed Retreat by Cedar Soak Co.",
   description:
-    "A private cedar hot tub delivered to your backyard the day after your wedding. Book with code AFTERGLOW for one additional night free.",
+    "A private cedar hot tub retreat for newlyweds, on their own schedule. Book it yourselves or give it as a wedding gift — use code AFTERGLOW for one night free.",
   robots: { index: false, follow: false },
 };
 
@@ -16,17 +16,17 @@ const AFTER_CARDS = [
   {
     tag: "Private",
     title: "Just the two of you",
-    body: "No toasts, no schedule, no in-laws. Just your own backyard, warm water, and each other.",
+    body: "No guest list, no schedule to keep. Just your own backyard, warm water, and each other.",
   },
   {
     tag: "Effortless",
-    title: "Ready before you get home",
-    body: "We deliver, fill, and fire it up while you're still at the reception. You won't lift a finger on your wedding night.",
+    title: "Ready whenever you are",
+    body: "We deliver, fill, and fire it up on your timeline &mdash; no lifting, no plumbing, no setup on your end.",
   },
   {
     tag: "Romantic",
-    title: "Built for the evening after",
-    body: "Cedar walls, warm light, and the kind of quiet that's hard to find during wedding season.",
+    title: "Built for slowing down",
+    body: "Cedar walls and warm light &mdash; the kind of quiet that's hard to find during wedding season, or any season.",
   },
 ];
 
@@ -66,15 +66,16 @@ export default function AfterglowPage() {
         <div className="ring-pattern-bg" aria-hidden="true"></div>
         <div className="wrap">
           <div className="afterglow-hero-content">
-            <span className="eyebrow">An offer for newlyweds &middot; Dayton, Ohio</span>
+            <span className="eyebrow">For newlyweds &middot; Dayton, Ohio</span>
             <h1>
               Married.
               <br />
               Now, exhale.
             </h1>
             <p className="sub">
-              A private cedar hot tub, delivered to your own backyard the day after your wedding &mdash; so the very
-              first thing you do as a married couple is absolutely nothing.
+              A private cedar hot tub, delivered to your own backyard whenever you&apos;re ready to slow down
+              together &mdash; the week after the wedding, mid-honeymoon staycation, or the weekend you finally
+              unpack the last box.
             </p>
 
             <div className="promo-chip">
@@ -86,13 +87,13 @@ export default function AfterglowPage() {
               <a href="#book" className="btn btn-primary">
                 Reserve your afterglow
               </a>
-              <a href="#why-after" className="btn btn-ghost" style={{ borderColor: "rgba(30,23,18,0.2)", color: "var(--text-dark)" }}>
-                Why the day after
+              <a href="#why-soak" className="btn btn-ghost" style={{ borderColor: "rgba(30,23,18,0.2)", color: "var(--text-dark)" }}>
+                Why newlyweds soak
               </a>
             </div>
 
             <div className="trust-strip">
-              <span>Delivered day-after</span>
+              <span>Delivered on your schedule</span>
               <span>Zero setup for you</span>
               <span>Just the two of you</span>
             </div>
@@ -100,19 +101,42 @@ export default function AfterglowPage() {
         </div>
       </section>
 
-      {/* ============ WHY THE DAY AFTER ============ */}
-      <section id="why-after">
+      {/* ============ WHY NEWLYWEDS SOAK ============ */}
+      <section id="why-soak">
         <div className="wrap">
           <div className="section-head reveal">
-            <span className="eyebrow">Why the day after</span>
+            <span className="eyebrow">Why newlyweds soak</span>
             <h2>The wedding had a hundred guests. This has two.</h2>
             <p className="sub">
-              After months of planning and one very big day, the best gift you can give each other is nothing to do
-              and nowhere to be.
+              Whether it&apos;s the week after, mid-honeymoon, or the weekend you move in together &mdash; the best
+              gift you can give each other is nothing to do and nowhere to be.
             </p>
           </div>
 
           <PhotoCardCarousel cards={AFTER_CARDS} />
+        </div>
+      </section>
+
+      {/* ============ PRICING ============ */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="price-band reveal">
+            <div className="left">
+              <span className="eyebrow">Starting rate</span>
+              <div className="big-num">
+                $747<sup>/ 3 nights</sup>
+              </div>
+              <p>
+                Every escape includes delivery, setup, a personal walkthrough, and pickup &mdash; no plumbing, no
+                permits, no hidden fees.
+              </p>
+            </div>
+            <div className="right">
+              <a href="#book" className="btn btn-primary">
+                Reserve now
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -125,8 +149,8 @@ export default function AfterglowPage() {
               <span className="eyebrow">Newlywed offer</span>
               <div className="headline">One extra night.</div>
               <p>
-                Book your post-wedding retreat with code AFTERGLOW and we&apos;ll add a full extra night &mdash;
-                completely free. Our gift to your first days as a married couple.
+                Book your retreat with code AFTERGLOW and we&apos;ll add a full extra night &mdash; completely free.
+                Works whenever you decide to redeem it.
               </p>
             </div>
             <div className="right">
@@ -142,16 +166,38 @@ export default function AfterglowPage() {
         </div>
       </section>
 
+      {/* ============ GIFT IT ============ */}
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="gift-band reveal">
+            <span className="eyebrow">Also a great gift</span>
+            <h2>Skip the toaster. Give them a night to breathe.</h2>
+            <p>
+              Parent of the bride, favorite sibling, the friend who always overdelivers &mdash; if you&apos;re
+              hunting for a gift that isn&apos;t already sitting on the registry, this is it. Reach out, mention
+              who it&apos;s for, and we&apos;ll coordinate delivery and timing directly with the happy couple.
+              Surprise them with it, or let them pick the date &mdash; either way, code AFTERGLOW still gets them
+              one night free.
+            </p>
+            <div className="cta-row">
+              <a href="#book" className="btn btn-primary">
+                Give the gift
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ BOOKING FORM ============ */}
       <section id="book" style={{ background: "var(--blush-light)" }}>
         <div className="wrap">
           <div className="form-wrap">
             <div className="form-side reveal">
               <span className="eyebrow">Reserve your afterglow</span>
-              <h2>Tell us about your big day.</h2>
+              <h2>Tell us who it&apos;s for.</h2>
               <p>
-                Share your wedding date and preferred delivery window, and we&apos;ll confirm availability and
-                delivery details within one business day.
+                Booking it for yourselves, or setting it up as a gift &mdash; share your preferred dates and
+                we&apos;ll confirm availability and delivery details within one business day.
               </p>
               <div className="form-meta">
                 <div className="row">
@@ -162,8 +208,8 @@ export default function AfterglowPage() {
                   <span className="dot"></span> 937-604-6399 &middot; cedarsoak@gmail.com
                 </div>
                 <div className="row">
-                  <span className="dot"></span> Most fall wedding weekends book several weeks in advance &mdash;
-                  reserve early.
+                  <span className="dot"></span> Most weekends book several weeks in advance &mdash; reserve early,
+                  redeem whenever you&apos;re ready.
                 </div>
               </div>
             </div>
