@@ -1219,8 +1219,48 @@
   .afterglow-scope .cc-arrow{ color:var(--blush-deep); }
   .afterglow-scope .cc-progress-fill{ background:var(--blush-deep); }
   .afterglow-scope .trust-strip span:not(:last-child)::after{ color:var(--blush-deep); }
-  .afterglow-scope .price-band{ background:var(--blush-light); }
-  .afterglow-scope .price-band .big-num sup{ color:var(--blush-deep); }
+
+  /* Pricing + offer combined into one band. Reuses .promo-band's layout/pattern-bg. */
+  .promo-band .big-num{
+    font-family: var(--font-fraunces), serif;
+    font-size:clamp(40px, 5.6vw, 64px);
+    color:var(--text-dark);
+    line-height:1;
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:10px 0 6px;
+  }
+  .promo-band .big-num .unit{
+    font-family: var(--font-plex-mono), monospace;
+    font-size:0.32em;
+    color:var(--blush-deep);
+    display:inline-flex;
+    align-items:baseline;
+    gap:7px;
+  }
+  .price-strike{
+    position:relative;
+    color:var(--text-soft);
+  }
+  .price-strike::after{
+    content:"";
+    position:absolute; left:-8%; right:-8%; top:46%;
+    height:2.5px;
+    background:var(--blush-deep);
+    transform:rotate(-7deg);
+    border-radius:2px;
+  }
+  .price-fix{
+    font-family: var(--font-caveat), cursive;
+    color:var(--blush-deep);
+    font-size:1.7em;
+    font-weight:700;
+    display:inline-block;
+    transform:rotate(-9deg);
+    margin:0 4px;
+  }
 
   .afterglow-header{
     background:var(--mist);

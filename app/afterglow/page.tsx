@@ -117,40 +117,24 @@ export default function AfterglowPage() {
         </div>
       </section>
 
-      {/* ============ PRICING ============ */}
-      <section style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="price-band reveal">
-            <div className="left">
-              <span className="eyebrow">Starting rate</span>
-              <div className="big-num">
-                $747<sup>/ 3 nights</sup>
-              </div>
-              <p>
-                Every escape includes delivery, setup, a personal walkthrough, and pickup &mdash; no plumbing, no
-                permits, no hidden fees.
-              </p>
-            </div>
-            <div className="right">
-              <a href="#book" className="btn btn-primary">
-                Reserve now
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ PROMO BAND ============ */}
+      {/* ============ PRICING + OFFER ============ */}
       <section style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="promo-band reveal">
             <div className="ring-pattern-bg" aria-hidden="true"></div>
             <div className="left">
-              <span className="eyebrow">Newlywed offer</span>
-              <div className="headline">One extra night.</div>
+              <span className="eyebrow">Newlywed rate</span>
+              <div className="big-num">
+                $747
+                <span className="unit">
+                  / <span className="price-strike">3</span>{" "}
+                  <span className="price-fix">4</span> nights
+                </span>
+              </div>
               <p>
-                Book your retreat with code AFTERGLOW and we&apos;ll add a full extra night &mdash; completely free.
-                Works whenever you decide to redeem it.
+                Every escape includes delivery, setup, a personal walkthrough, and pickup &mdash; no plumbing, no
+                permits. Book with code AFTERGLOW and we&apos;ll add that fourth night ourselves, completely free,
+                whenever you decide to redeem it.
               </p>
             </div>
             <div className="right">
