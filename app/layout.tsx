@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans, IBM_Plex_Mono, Caveat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const cedarSoakDisplay = localFont({
+  src: [{ path: "../public/fonts/CedarSoakDisplay-Regular.woff2", weight: "400", style: "normal" }],
+  variable: "--font-cedar-soak",
+  display: "swap",
+});
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -49,7 +56,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable} ${plexMono.variable} ${caveat.variable}`}>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${workSans.variable} ${plexMono.variable} ${caveat.variable} ${cedarSoakDisplay.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
