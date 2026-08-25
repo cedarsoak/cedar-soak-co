@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import BookingForm from "@/components/BookingForm";
@@ -30,30 +31,14 @@ const AFTER_CARDS = [
   },
 ];
 
-function LogoMark() {
-  return (
-    <svg className="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <path
-        d="M16 3C16 3 8 12 8 19C8 23.4183 11.5817 27 16 27C20.4183 27 24 23.4183 24 19C24 12 16 3 16 3Z"
-        stroke="#C97C3D"
-        strokeWidth="1.6"
-      />
-      <path
-        d="M16 12C16 12 12 17 12 20.5C12 22.9853 13.7909 25 16 25C18.2091 25 20 22.9853 20 20.5C20 17 16 12 16 12Z"
-        fill="#C97C3D"
-      />
-    </svg>
-  );
-}
-
 export default function AfterglowPage() {
   return (
     <div className="afterglow-scope">
       <header className="afterglow-header">
         <div className="wrap">
           <Link href="/afterglow" className="logo">
-            <LogoMark />
-            Cedar Soak Co.
+            <Image src="/logo-icon.png" alt="" width={30} height={35} className="logo-mark" priority />
+            Cedar Soak
           </Link>
           <a href="#book" className="btn btn-primary">
             Reserve now

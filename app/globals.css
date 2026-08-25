@@ -114,18 +114,20 @@
     box-shadow:0 8px 24px -16px rgba(17,17,17,0.18);
   }
   .logo{
-    font-family: var(--font-fraunces), serif;
-    font-weight:600;
-    font-size:21px;
+    font-family: var(--font-cedar-soak), sans-serif;
+    font-weight:400;
+    font-size:18px;
+    text-transform:uppercase;
     color:var(--text-dark);
-    letter-spacing:0.01em;
+    letter-spacing:0.055em;
     display:flex;
     align-items:center;
     gap:10px;
   }
   .logo-mark{
-    width:30px; height:30px;
+    width:30px; height:35px;
     flex-shrink:0;
+    object-fit:contain;
   }
   nav.primary-nav{ display:flex; align-items:center; gap:36px; }
   nav.primary-nav a{
@@ -863,7 +865,8 @@
     padding-bottom:48px;
     border-bottom:1px solid rgba(245,241,232,0.1);
   }
-  .footer-brand .logo{ margin-bottom:16px; }
+  .footer-brand .logo{ margin-bottom:16px; color:var(--text-light); }
+  .footer-brand .logo-mark{ filter:invert(1); }
   .footer-brand p{ color:var(--text-light-soft); font-size:14.5px; max-width:280px; }
   .footer-col h4{
     font-family: var(--font-plex-mono), monospace;
