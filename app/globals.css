@@ -123,6 +123,11 @@
     display:flex;
     align-items:center;
     gap:10px;
+    /* The font ships one weight (Regular) only, which reads as too thin at
+       this size. There's no bold face to switch to, so a text-stroke fakes
+       the heavier weight seen in the approved logo artwork. */
+    -webkit-text-stroke:0.9px currentColor;
+    text-stroke:0.9px currentColor;
   }
   .logo-mark{
     width:30px; height:35px;
