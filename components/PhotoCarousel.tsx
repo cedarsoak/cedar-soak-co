@@ -5,12 +5,12 @@ import { useRef, useState } from "react";
 
 const SLIDES = [
   {
-    src: "/gallery/gallery-08.jpg",
-    alt: "Cedar hot tub deck entrance at dusk",
+    src: "/gallery/built-to-last-rear.jpg",
+    alt: "Cedar hot tub at night with the wood-fire chimney against a dusk sky",
   },
   {
-    src: "/gallery/gallery-04.jpg",
-    alt: "Close view of the cedar hot tub's stainless bands",
+    src: "/gallery/built-to-last-front.jpg",
+    alt: "Cedar hot tub deck in daylight with steps, a lantern, and a wine table",
   },
 ];
 

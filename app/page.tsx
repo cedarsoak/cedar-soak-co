@@ -59,14 +59,26 @@ const WHY_CARDS = [
   {
     title: "Designed for privacy",
     body: "Handcrafted cedar walls, warm lighting, and the atmosphere of a boutique mountain retreat — right where you already live.",
+    image: {
+      src: "/gallery/why-cedar-soak-1.jpg",
+      alt: "Cedar hot tub deck at night with string lights, candles, and private lounge seating",
+    },
   },
   {
     title: "White-glove delivery",
     body: "We deliver, position, fill, and walk you through it — then return for pickup.",
+    image: {
+      src: "/gallery/why-cedar-soak-2.jpg",
+      alt: "Cedar hot tub in daylight surrounded by trees, with a lantern and wine service nearby",
+    },
   },
   {
     title: "Fresh every time",
     body: "Every rental begins with fresh water in a professionally cleaned and sanitized tub.",
+    image: {
+      src: "/gallery/why-cedar-soak-3.jpg",
+      alt: "A couple relaxing together in the cedar hot tub at golden hour",
+    },
   },
   {
     title: "Wood fire + electric",
@@ -75,6 +87,10 @@ const WHY_CARDS = [
   {
     title: "Made for moments that matter",
     body: "Date nights, anniversaries, birthdays, staycations — weekends you'll remember long after the water cools.",
+    image: {
+      src: "/gallery/why-cedar-soak-5.jpg",
+      alt: "Wine and glasses chilling beside the cedar hot tub at night",
+    },
   },
 ];
 
@@ -156,8 +172,8 @@ export default function HomePage() {
             <div className="photo-stack">
               <div className="stack-back">
                 <Image
-                  src="/gallery/gallery-08.jpg"
-                  alt="Cedar hot tub deck entrance at dusk"
+                  src="/gallery/built-to-last-rear.jpg"
+                  alt="Cedar hot tub at night with the wood-fire chimney against a dusk sky"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 900px) 70vw, 30vw"
@@ -165,8 +181,8 @@ export default function HomePage() {
               </div>
               <div className="stack-front">
                 <Image
-                  src="/gallery/gallery-04.jpg"
-                  alt="Close view of the cedar hot tub's stainless bands"
+                  src="/gallery/built-to-last-front.jpg"
+                  alt="Cedar hot tub deck in daylight with steps, a lantern, and a wine table"
                   fill
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 900px) 45vw, 18vw"
@@ -222,13 +238,13 @@ export default function HomePage() {
               <Image src="/gallery/gallery-10.jpg" alt="Aerial view of the steaming cedar hot tub at dusk with string lights" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 100vw, 50vw" />
             </div>
             <div className="g-item">
-              <Image src="/gallery/gallery-02.jpg" alt="Cedar hot tub with wood-fire stove chimney" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 50vw, 25vw" />
+              <Image src="/gallery/why-cedar-soak-3.jpg" alt="A couple relaxing together in the cedar hot tub at golden hour" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 50vw, 25vw" />
             </div>
             <div className="g-item">
-              <Image src="/gallery/gallery-01.jpg" alt="Cedar Soak hot tub deck set up at dusk with string lights" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 50vw, 25vw" />
+              <Image src="/gallery/built-to-last-front.jpg" alt="Cedar hot tub deck in daylight with steps, a lantern, and a wine table" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 50vw, 25vw" />
             </div>
             <div className="g-item">
-              <Image src="/gallery/gallery-06.jpg" alt="Cedar hot tub deck seating area with lanterns and pillows" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 100vw, 50vw" />
+              <Image src="/gallery/why-cedar-soak-1.jpg" alt="Cedar hot tub deck at night with string lights, candles, and private lounge seating" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 100vw, 50vw" />
             </div>
           </div>
         </div>

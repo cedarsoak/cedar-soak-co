@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 
 type CarouselCard = {
   tag?: string;
   title: string;
   body: string;
+  image?: { src: string; alt: string };
 };
 
 function PhotoPlaceholder() {
@@ -51,7 +53,17 @@ export default function PhotoCardCarousel({ cards }: { cards: CarouselCard[] }) 
         {cards.map((card) => (
           <div className="cc-slide" key={card.title}>
             <div className="cc-slide-media">
-              <PhotoPlaceholder />
+              {card.image ? (
+                <Image
+                  src={card.image.src}
+                  alt={card.image.alt}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 640px) 90vw, 520px"
+                />
+              ) : (
+                <PhotoPlaceholder />
+              )}
             </div>
             <div className="cc-slide-content">
               {card.tag && <span className="tag">{card.tag}</span>}
