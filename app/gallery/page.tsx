@@ -11,15 +11,12 @@ export const metadata: Metadata = {
 
 const GALLERY_IMAGES = [
   { src: "/gallery/full/gallery-10.jpg", alt: "Aerial view of the steaming cedar hot tub at dusk with string lights" },
-  { src: "/gallery/full/gallery-01.jpg", alt: "Cedar Soak hot tub deck set up at dusk with string lights" },
-  { src: "/gallery/full/gallery-02.jpg", alt: "Cedar hot tub with wood-fire stove chimney at dusk" },
-  { src: "/gallery/full/gallery-03.jpg", alt: "Cedar hot tub steps and privacy fencing" },
-  { src: "/gallery/full/gallery-04.jpg", alt: "Close view of the cedar hot tub's stainless bands" },
-  { src: "/gallery/full/gallery-05.jpg", alt: "Cedar hot tub trailer setup in the evening" },
-  { src: "/gallery/full/gallery-06.jpg", alt: "Cedar hot tub deck seating with lanterns and pillows" },
-  { src: "/gallery/full/gallery-07.jpg", alt: "Cedar hot tub lid and stovepipe detail" },
-  { src: "/gallery/full/gallery-08.jpg", alt: "Cedar hot tub deck entrance at dusk" },
-  { src: "/gallery/full/gallery-09.jpg", alt: "Cedar hot tub deck ambiance with string lights" },
+  { src: "/gallery/full/why-cedar-soak-3.jpg", alt: "A couple relaxing together in the cedar hot tub at golden hour" },
+  { src: "/gallery/full/built-to-last-front.jpg", alt: "Cedar hot tub deck in daylight with steps, a lantern, and a wine table" },
+  { src: "/gallery/full/why-cedar-soak-2.jpg", alt: "Cedar hot tub in daylight surrounded by trees, with a lantern and wine service nearby" },
+  { src: "/gallery/full/built-to-last-rear.jpg", alt: "Cedar hot tub at night with the wood-fire chimney against a dusk sky" },
+  { src: "/gallery/full/why-cedar-soak-1.jpg", alt: "Cedar hot tub deck at night with string lights, candles, and private lounge seating" },
+  { src: "/gallery/full/why-cedar-soak-5.jpg", alt: "Wine and glasses chilling beside the cedar hot tub at night" },
 ];
 
 export default function GalleryPage() {
