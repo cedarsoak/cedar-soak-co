@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import HeroVideo from "@/components/HeroVideo";
+import Hero from "@/components/Hero";
 import QuickCaptureForm from "@/components/QuickCaptureForm";
 import BookingForm from "@/components/BookingForm";
 import StickyCta from "@/components/StickyCta";
@@ -110,7 +110,7 @@ export default function HomePage() {
     <>
       <Header />
 
-      <HeroVideo />
+      <Hero />
 
       {/* ============ QUICK CAPTURE ============ */}
       <section className="quick-capture">

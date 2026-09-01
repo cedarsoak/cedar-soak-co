@@ -65,36 +65,8 @@
     display:inline-block;
   }
 
-  /* Ember line signature divider */
-  .ember-line{
-    width:100%;
-    height:34px;
-    display:block;
-  }
-  .ember-line path{
-    fill:none;
-    stroke:var(--ember);
-    stroke-width:1.6;
-    stroke-linecap:round;
-  }
-  .ember-line circle{
-    fill:var(--ember);
-  }
-  .glow{
-    animation:emberPulse 3.6s ease-in-out infinite;
-    transform-origin:center;
-  }
-  @keyframes emberPulse{
-    0%,100%{ opacity:0.55; r:3.2; }
-    50%{ opacity:1; r:4.4; }
-  }
   @media (prefers-reduced-motion: reduce){
-    .glow{ animation:none; opacity:0.9; }
     html{ scroll-behavior:auto; }
-    .hero-media video{ animation:none; }
-    .hero-content > *{ animation:none; opacity:1; transform:none; }
-    .scroll-cue{ animation:none; opacity:1; }
-    .scroll-cue svg{ animation:none; }
   }
 
     /* ============ HEADER ============ */
@@ -213,125 +185,24 @@
   }
 
     /* ============ HERO ============ */
+  /* Static hero banner: the images carry their own baked-in headline, price,
+     and feature icons, so this is just the raw photo -- no overlay,
+     gradient, or animation layered on top. Check Availability sits right
+     below it, above the fold. */
   .hero{
     position:relative;
-    min-height:max(84vh, 560px);
-    max-height:820px;
-    display:flex;
-    align-items:flex-end;
-    padding-top:120px;
-    padding-bottom:48px;
     background:var(--mist);
-    overflow:hidden;
+    padding-top:80px;
+    padding-bottom:0;
   }
-  .hero-media{
-    position:absolute; inset:0 6%;
-    z-index:0;
-    overflow:hidden;
-    background:var(--mist);
-  }
-  .hero-media video{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    object-position:50% 35%;
-    animation:heroZoom 22s ease-in-out infinite alternate;
-    will-change:transform;
-  }
-  @keyframes heroZoom{
-    0%{ transform:scale(1); }
-    100%{ transform:scale(1.09); }
-  }
-.hero-overlay{
-    position:absolute; inset:0 6%;
-    z-index:1;
-    background:
-      linear-gradient(180deg, rgba(17,17,17,0.22) 0%, rgba(17,17,17,0.02) 30%, rgba(17,17,17,0.1) 58%, rgba(17,17,17,0.55) 100%),
-      radial-gradient(120% 90% at 10% 0%, rgba(172,138,70,0.16), transparent 55%),
-      radial-gradient(70% 55% at 90% 100%, rgba(172,138,70,0.12), transparent 60%);
-    pointer-events:none;
-  }
-  .hero-embers{
-    position:absolute; inset:0;
-    z-index:2;
-    pointer-events:none;
-  }
-  @media (max-width:1024px){
-    .hero{ min-height:max(74vh, 520px); padding-top:104px; }
-  }
+  .hero-media{ position:relative; width:100%; overflow:hidden; }
+  .hero-img{ position:relative; width:100%; aspect-ratio:1536/620; display:block; }
+  .hero-img-mobile{ display:none; }
   @media (max-width:768px){
-    .hero-media, .hero-overlay{ inset:0; }
-    /* Video-only hero on mobile, sized so it plus the quick-capture form both fit above the fold */
-    .hero{ height:clamp(260px, 40vh, 380px); min-height:0; max-height:none; padding:0; }
-    .hero-content, .scroll-cue{ display:none; }
-    .hero-content h1{ font-size:clamp(32px, 9vw, 46px); }
-    .hero-content .sub{ margin:14px 0 20px; }
-    .hero-content .trust-strip{ display:none; }
+    .hero{ padding-top:72px; }
+    .hero-img-desktop{ display:none; }
+    .hero-img-mobile{ display:block; aspect-ratio:1/1; }
   }
-  .hero .wrap{ position:relative; z-index:3; width:100%; }
-  .hero-content{ max-width:640px; }
-  .hero-content .eyebrow{ margin-bottom:22px; }
-  .hero-content h1{
-    font-size:clamp(40px, 6.4vw, 74px);
-    color:var(--text-light);
-    margin-bottom:6px;
-  }
-  .hero-content h1 em{
-    font-style:italic;
-    font-weight:500;
-    color:var(--ember-light);
-  }
-  .hero-content .sub{
-    font-size:clamp(16px, 2vw, 19px);
-    color:var(--text-light-soft);
-    max-width:480px;
-    margin:20px 0 28px;
-  }
-  .hero-ember-line{ margin:0 0 20px; max-width:220px; }
-
-  @keyframes heroFadeUp{
-    from{ opacity:0; transform:translateY(22px); }
-    to{ opacity:1; transform:translateY(0); }
-  }
-  .hero-content > *{
-    opacity:0;
-    animation:heroFadeUp .9s cubic-bezier(.2,.7,.2,1) forwards;
-  }
-  .hero-content .eyebrow{ animation-delay:.15s; }
-  .hero-content h1{ animation-delay:.3s; }
-  .hero-content .hero-ember-line{ animation-delay:.55s; }
-  .hero-content .sub{ animation-delay:.7s; }
-  .hero-content .price-chip{ animation-delay:.85s; }
-  .hero-content .cta-row{ animation-delay:1s; }
-  .hero-content .trust-strip{ animation-delay:1.15s; }
-
-  .scroll-cue{
-    position:absolute;
-    left:50%;
-    bottom:28px;
-    transform:translateX(-50%);
-    z-index:3;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
-    opacity:0;
-    animation:heroFadeUp .9s cubic-bezier(.2,.7,.2,1) forwards;
-    animation-delay:1.3s;
-  }
-  .scroll-cue span{
-    font-family: var(--font-plex-mono), monospace;
-    font-size:10px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--text-light-soft);
-  }
-  .scroll-cue svg{ animation:scrollBob 2.2s ease-in-out infinite; }
-  @keyframes scrollBob{
-    0%,100%{ transform:translateY(0); opacity:0.6; }
-    50%{ transform:translateY(7px); opacity:1; }
-  }
-  @media (max-width:640px){ .scroll-cue{ display:none; } }
 
   /* ============ QUICK CAPTURE ============ */
     .quick-capture{
@@ -940,7 +811,6 @@
   @media (max-width: 640px){
     section{ padding:64px 0; }
     .wrap{ padding:0 20px; }
-    .hero{ padding-top:100px; padding-bottom:120px; align-items:flex-end; }
     .cta-row{ flex-direction:column; }
     .cta-row .btn{ width:100%; }
     .gallery-grid{ grid-template-columns:1fr 1fr; grid-template-rows:130px 130px 130px; }
