@@ -476,6 +476,11 @@
 
     /* ============ SECTION GENERIC ============ */
   section{ padding:96px 0; }
+  /* The Why Cedar Soak carousel's own nav/counter already reads as a
+     footer, so the standard double section-padding after it feels
+     looser than the same gap elsewhere (e.g. before Built to Last,
+     where a photo fills the space immediately). Tighten it to match. */
+  #why{ padding-bottom:48px; }
   .section-head{ max-width:640px; margin-bottom:56px; }
   .section-head h2{ font-size:clamp(30px, 4vw, 46px); margin-top:14px; }
   .section-head .sub{ color:var(--text-soft); font-size:17px; margin-top:16px; max-width:520px; }
