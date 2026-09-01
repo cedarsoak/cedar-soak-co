@@ -186,8 +186,9 @@
 
     /* ============ HERO ============ */
   /* Static hero banner: the images carry their own baked-in headline, price,
-     and feature icons, so this is just the raw photo plus a CTA row -- no
-     overlay, gradient, or animation layered on top. */
+     and feature icons, so this is just the raw photo -- no overlay,
+     gradient, or animation layered on top. Check Availability sits right
+     below it, above the fold. */
   .hero{
     position:relative;
     background:var(--mist);
@@ -196,19 +197,10 @@
   .hero-media{ position:relative; width:100%; overflow:hidden; }
   .hero-img{ position:relative; width:100%; aspect-ratio:1536/620; display:block; }
   .hero-img-mobile{ display:none; }
-  .hero-cta-bar{
-    display:flex;
-    gap:16px;
-    flex-wrap:wrap;
-    justify-content:center;
-    padding:32px 24px;
-  }
   @media (max-width:768px){
     .hero{ padding-top:72px; }
     .hero-img-desktop{ display:none; }
     .hero-img-mobile{ display:block; aspect-ratio:840/397; }
-    .hero-cta-bar{ padding:24px; }
-    .hero-cta-bar .btn{ width:100%; }
   }
 
   /* ============ QUICK CAPTURE ============ */
