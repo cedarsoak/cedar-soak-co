@@ -193,6 +193,7 @@
     position:relative;
     background:var(--mist);
     padding-top:80px;
+    padding-bottom:0;
   }
   .hero-media{ position:relative; width:100%; overflow:hidden; }
   .hero-img{ position:relative; width:100%; aspect-ratio:1536/620; display:block; }
@@ -810,7 +811,6 @@
   @media (max-width: 640px){
     section{ padding:64px 0; }
     .wrap{ padding:0 20px; }
-    .hero{ padding-top:100px; padding-bottom:120px; align-items:flex-end; }
     .cta-row{ flex-direction:column; }
     .cta-row .btn{ width:100%; }
     .gallery-grid{ grid-template-columns:1fr 1fr; grid-template-rows:130px 130px 130px; }
