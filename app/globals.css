@@ -201,7 +201,7 @@
   @media (max-width:768px){
     .hero{ padding-top:72px; }
     .hero-img-desktop{ display:none; }
-    .hero-img-mobile{ display:block; aspect-ratio:840/397; }
+    .hero-img-mobile{ display:block; aspect-ratio:1/1; }
   }
 
   /* ============ QUICK CAPTURE ============ */
