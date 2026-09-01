@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Follow along</h4>
             <div className="footer-social">
-              <a href="#" aria-label="Facebook">
+              <a href="https://www.facebook.com/cedarsoakco" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
                     d="M14 9H16V6H14C12.3 6 11 7.3 11 9V11H9V14H11V21H14V14H16L17 11H14V9Z"
@@ -38,7 +38,7 @@ export default function Footer() {
                   />
                 </svg>
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href="https://www.instagram.com/cedarsoak" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <rect x="3" y="3" width="18" height="18" rx="5" stroke="#F5F1E8" strokeWidth="1.3" />
                   <circle cx="12" cy="12" r="4" stroke="#F5F1E8" strokeWidth="1.3" />
