@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroVideo from "@/components/HeroVideo";
@@ -234,18 +235,18 @@ export default function HomePage() {
             </a>
           </div>
           <div className="gallery-grid reveal">
-            <div className="g-item">
+            <Link href="/gallery" className="g-item" aria-label="View full gallery">
               <Image src="/gallery/gallery-10.jpg" alt="Aerial view of the steaming cedar hot tub at dusk with string lights" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 100vw, 50vw" />
-            </div>
-            <div className="g-item">
+            </Link>
+            <Link href="/gallery" className="g-item" aria-label="View full gallery">
               <Image src="/gallery/why-cedar-soak-3.jpg" alt="A couple relaxing together in the cedar hot tub at golden hour" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 50vw, 25vw" />
-            </div>
-            <div className="g-item">
+            </Link>
+            <Link href="/gallery" className="g-item" aria-label="View full gallery">
               <Image src="/gallery/built-to-last-front.jpg" alt="Cedar hot tub deck in daylight with steps, a lantern, and a wine table" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 50vw, 25vw" />
-            </div>
-            <div className="g-item">
+            </Link>
+            <Link href="/gallery" className="g-item" aria-label="View full gallery">
               <Image src="/gallery/why-cedar-soak-1.jpg" alt="Cedar hot tub deck at night with string lights, candles, and private lounge seating" fill className="g-item-img" style={{ objectFit: "cover" }} sizes="(max-width: 640px) 100vw, 50vw" />
-            </div>
+            </Link>
           </div>
         </div>
       </section>
