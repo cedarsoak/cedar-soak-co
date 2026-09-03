@@ -425,6 +425,11 @@
     overflow:hidden;
     box-shadow:var(--shadow-card);
   }
+  .cc-video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+  }
   .cc-photo-placeholder{
     position:absolute; inset:0;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
