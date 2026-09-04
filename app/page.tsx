@@ -43,6 +43,7 @@ const HEAT_OPTIONS = [
     tag: "Traditional",
     title: "Wood-fire",
     body: "The crackle, the glow, the smell of cedar smoke on a cool evening. As real as soaking gets.",
+    video: "/heat-wood-fire.mp4",
   },
   {
     tag: "Effortless",

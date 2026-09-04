@@ -8,6 +8,7 @@ type CarouselCard = {
   title: string;
   body: string;
   image?: { src: string; alt: string };
+  video?: string;
 };
 
 function PhotoPlaceholder() {
@@ -53,7 +54,17 @@ export default function PhotoCardCarousel({ cards }: { cards: CarouselCard[] }) 
         {cards.map((card) => (
           <div className="cc-slide" key={card.title}>
             <div className="cc-slide-media">
-              {card.image ? (
+              {card.video ? (
+                <video
+                  className="cc-video"
+                  src={card.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                />
+              ) : card.image ? (
                 <Image
                   src={card.image.src}
                   alt={card.image.alt}
