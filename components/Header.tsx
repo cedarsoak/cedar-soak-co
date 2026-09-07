@@ -26,8 +26,7 @@ export default function Header() {
       <header id="siteHeader" className={scrolled ? "scrolled" : ""}>
         <div className="wrap">
           <Link href="/#top" className="logo">
-            <Image src="/logo-icon.png" alt="" width={30} height={35} className="logo-mark" priority />
-            Cedar Soak
+            <Image src="/logo-horizontal.svg" alt="Cedar Soak" width={198} height={34} className="logo-mark" priority />
           </Link>
           <nav className="primary-nav">
             {NAV_LINKS.map((link) => (
