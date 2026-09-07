@@ -8,8 +8,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <Link href="/#top" className="logo">
-              <Image src="/logo-icon.png" alt="" width={30} height={35} className="logo-mark" />
-              Cedar Soak
+              <Image src="/logo-horizontal.svg" alt="Cedar Soak" width={198} height={34} className="logo-mark" />
             </Link>
             <p>Handcrafted cedar hot tubs, delivered to your backyard, cabin, or celebration across Dayton, Ohio.</p>
           </div>

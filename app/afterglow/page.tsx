@@ -37,8 +37,7 @@ export default function AfterglowPage() {
       <header className="afterglow-header">
         <div className="wrap">
           <Link href="/afterglow" className="logo">
-            <Image src="/logo-icon.png" alt="" width={30} height={35} className="logo-mark" priority />
-            Cedar Soak
+            <Image src="/logo-horizontal.svg" alt="Cedar Soak" width={198} height={34} className="logo-mark" priority />
           </Link>
           <a href="#book" className="btn btn-primary">
             Reserve now

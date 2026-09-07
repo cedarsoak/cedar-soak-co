@@ -97,7 +97,7 @@
     gap:10px;
   }
   .logo-mark{
-    width:30px; height:35px;
+    width:auto; height:34px;
     flex-shrink:0;
     object-fit:contain;
   }
