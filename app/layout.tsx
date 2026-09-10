@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans, IBM_Plex_Mono, Caveat } from "next/font/google";
 import localFont from "next/font/local";
+import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import "./globals.css";
 
 const cedarSoakDisplay = localFont({
@@ -60,7 +61,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${fraunces.variable} ${workSans.variable} ${plexMono.variable} ${caveat.variable} ${cedarSoakDisplay.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <LocalBusinessSchema />
+        {children}
+      </body>
     </html>
   );
 }

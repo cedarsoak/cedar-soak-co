@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyCta from "@/components/StickyCta";
+import FaqSchema from "@/components/FaqSchema";
 
 export const metadata: Metadata = {
   title: "FAQs | Cedar Soak Co.",
@@ -66,6 +67,7 @@ const FAQS = [
 export default function FaqPage() {
   return (
     <>
+      <FaqSchema faqs={FAQS.map((item) => ({ question: item.q, answer: item.a }))} />
       <Header />
       <section className="page-hero">
         <div className="wrap">
