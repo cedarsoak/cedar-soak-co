@@ -26,6 +26,7 @@ export default function LocalBusinessSchema() {
       "@type": "PostalAddress",
       addressLocality: "Dayton",
       addressRegion: "OH",
+      postalCode: "45419",
       addressCountry: "US",
     },
     areaServed: [
