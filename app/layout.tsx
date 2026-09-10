@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Work_Sans, IBM_Plex_Mono, Caveat } from "next/font/google";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import "./globals.css";
 
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LocalBusinessSchema />
         {children}
       </body>
+      <GoogleAnalytics gaId="G-Y6XFK54J0N" />
     </html>
   );
 }
