@@ -18,16 +18,28 @@ const AFTER_CARDS = [
     tag: "Private",
     title: "Just the two of you",
     body: "No guest list, no schedule to keep. Just your own backyard, warm water, and each other.",
+    image: {
+      src: "/gallery/why-cedar-soak-3.jpg",
+      alt: "A couple relaxing together in the cedar hot tub at golden hour",
+    },
   },
   {
     tag: "Effortless",
     title: "Ready whenever you are",
     body: "We deliver, fill, and fire it up on your timeline &mdash; no lifting, no plumbing, no setup on your end.",
+    image: {
+      src: "/gallery/why-cedar-soak-2.jpg",
+      alt: "Cedar hot tub in daylight surrounded by trees, with a lantern and wine service nearby",
+    },
   },
   {
     tag: "Romantic",
     title: "Built for slowing down",
     body: "Cedar walls and warm light &mdash; the kind of quiet that's hard to find during wedding season, or any season.",
+    image: {
+      src: "/gallery/why-cedar-soak-1.jpg",
+      alt: "Cedar hot tub deck at night with string lights, candles, and private lounge seating",
+    },
   },
 ];
 
@@ -47,39 +59,65 @@ export default function AfterglowPage() {
 
       {/* ============ HERO ============ */}
       <section className="afterglow-hero">
-        <div className="ring-pattern-bg" aria-hidden="true"></div>
-        <div className="wrap">
-          <div className="afterglow-hero-content">
-            <span className="eyebrow">For newlyweds &middot; Dayton, Ohio</span>
-            <h1>
-              Married.
-              <br />
-              Now, exhale.
-            </h1>
-            <p className="sub">
-              A private cedar hot tub, delivered to your own backyard whenever you&apos;re ready to slow down
-              together &mdash; the week after the wedding, mid-honeymoon staycation, or the weekend you finally
-              unpack the last box.
-            </p>
+        <div className="afterglow-hero-media">
+          <div className="afterglow-hero-img afterglow-hero-img-desktop">
+            <Image
+              src="/gallery/built-to-last-front.jpg"
+              alt="Cedar hot tub deck in daylight with steps, a lantern, and a wine table set for two"
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="100vw"
+              quality={90}
+              priority
+            />
+          </div>
+          <div className="afterglow-hero-img afterglow-hero-img-mobile">
+            <Image
+              src="/gallery/built-to-last-front.jpg"
+              alt="Cedar hot tub deck in daylight with steps, a lantern, and a wine table set for two"
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="100vw"
+              quality={90}
+              priority
+            />
+          </div>
+        </div>
 
-            <div className="promo-chip">
-              <span className="amt">+1 night free</span>
-              <span className="lbl">book with code AFTERGLOW</span>
-            </div>
+        <div className="afterglow-hero-band">
+          <div className="wrap">
+            <div className="afterglow-hero-content">
+              <span className="eyebrow">For newlyweds &middot; Dayton, Ohio</span>
+              <h1>
+                Married.
+                <br />
+                Now, exhale.
+              </h1>
+              <p className="sub">
+                A private cedar hot tub, delivered to your own backyard whenever you&apos;re ready to slow down
+                together &mdash; the week after the wedding, mid-honeymoon staycation, or the weekend you finally
+                unpack the last box.
+              </p>
 
-            <div className="cta-row">
-              <a href="#book" className="btn btn-primary">
-                Reserve your afterglow
-              </a>
-              <a href="#why-soak" className="btn btn-ghost" style={{ borderColor: "rgba(30,23,18,0.2)", color: "var(--text-dark)" }}>
-                Why newlyweds soak
-              </a>
-            </div>
+              <div className="promo-chip">
+                <span className="amt">+1 night free</span>
+                <span className="lbl">book with code AFTERGLOW</span>
+              </div>
 
-            <div className="trust-strip">
-              <span>Delivered on your schedule</span>
-              <span>Zero setup for you</span>
-              <span>Just the two of you</span>
+              <div className="cta-row">
+                <a href="#book" className="btn btn-primary">
+                  Reserve your afterglow
+                </a>
+                <a href="#why-soak" className="btn btn-ghost" style={{ borderColor: "rgba(30,23,18,0.2)", color: "var(--text-dark)" }}>
+                  Why newlyweds soak
+                </a>
+              </div>
+
+              <div className="trust-strip">
+                <span>Delivered on your schedule</span>
+                <span>Zero setup for you</span>
+                <span>Just the two of you</span>
+              </div>
             </div>
           </div>
         </div>
