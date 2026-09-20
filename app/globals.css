@@ -1165,11 +1165,27 @@
 
   .afterglow-hero{
     position:relative;
-    padding:72px 0 96px;
-    background:linear-gradient(180deg, var(--blush-light) 0%, var(--mist) 78%);
+    background:var(--blush-light);
     overflow:hidden;
   }
-  .afterglow-hero .wrap{ position:relative; z-index:1; }
+  .afterglow-hero-media{ position:relative; width:100%; overflow:hidden; }
+  .afterglow-hero-img{ position:relative; width:100%; aspect-ratio:1536/620; display:block; }
+  .afterglow-hero-img::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(185,124,110,0) 60%, rgba(251,240,237,0.92) 97%);
+    pointer-events:none;
+  }
+  .afterglow-hero-img-mobile{ display:none; }
+  @media (max-width:768px){
+    .afterglow-hero-img-desktop{ display:none; }
+    .afterglow-hero-img-mobile{ display:block; aspect-ratio:1/1; }
+  }
+  .afterglow-hero-band{
+    position:relative;
+    padding:44px 0 96px;
+  }
+  .afterglow-hero-band .wrap{ position:relative; z-index:1; }
   .afterglow-hero-content{ max-width:640px; }
   .afterglow-hero-content .eyebrow{ margin-bottom:20px; }
   .afterglow-hero-content h1{ font-size:clamp(40px, 6.4vw, 72px); margin-bottom:22px; }
@@ -1282,5 +1298,5 @@
   }
   @media (max-width:640px){
     .promo-band{ flex-direction:column; align-items:flex-start; }
-    .afterglow-hero{ padding:56px 0 72px; }
+    .afterglow-hero-band{ padding:36px 0 64px; }
   }
