@@ -82,17 +82,22 @@ export default function AfterglowPage() {
               priority
             />
           </div>
-        </div>
 
-        <div className="afterglow-hero-band">
-          <div className="wrap">
-            <div className="afterglow-hero-content">
+          <div className="afterglow-hero-headline">
+            <div className="wrap">
               <span className="eyebrow">For newlyweds &middot; Dayton, Ohio</span>
               <h1>
                 Married.
                 <br />
                 Now, exhale.
               </h1>
+            </div>
+          </div>
+        </div>
+
+        <div className="afterglow-hero-band">
+          <div className="wrap">
+            <div className="afterglow-hero-content">
               <p className="sub">
                 A private cedar hot tub, delivered to your own backyard whenever you&apos;re ready to slow down
                 together &mdash; the week after the wedding, mid-honeymoon staycation, or the weekend you finally
