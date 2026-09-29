@@ -33,8 +33,9 @@ export default function BookingForm({ promoCode, source }: BookingFormProps) {
           heatPreference: formData.get("heatPreference"),
           location: formData.get("location"),
           message: formData.get("message"),
+          heardAbout: formData.get("heardAbout"),
           website: formData.get("website"), // honeypot
-          promoCode,
+          promoCode: promoCode || String(formData.get("promoCode") ?? "").trim().toUpperCase() || undefined,
           source,
         }),
       });
@@ -95,6 +96,30 @@ export default function BookingForm({ promoCode, source }: BookingFormProps) {
       <div className="field">
         <label htmlFor="location">Delivery location (city)</label>
         <input type="text" id="location" name="location" placeholder="Kettering, OH" />
+      </div>
+      <div className="field-row">
+        <div className="field">
+          <label htmlFor="heard-select">How&apos;d you find us?</label>
+          <select id="heard-select" name="heardAbout" defaultValue="" required>
+            <option value="" disabled>Choose one</option>
+            <option>Facebook/Instagram ad</option>
+            <option>TikTok</option>
+            <option>Instagram post</option>
+            <option>Facebook group</option>
+            <option>Nextdoor</option>
+            <option>Poster/flyer</option>
+            <option>Google</option>
+            <option>Friend/family</option>
+            <option>Wedding expo</option>
+            <option>Other</option>
+          </select>
+        </div>
+        {!promoCode && (
+          <div className="field">
+            <label htmlFor="promo">Promo code (optional)</label>
+            <input type="text" id="promo" name="promoCode" placeholder="e.g. SOAK4" autoCapitalize="characters" style={{ textTransform: "uppercase" }} />
+          </div>
+        )}
       </div>
       <div className="field">
         <label htmlFor="msg">Anything else we should know?</label>
