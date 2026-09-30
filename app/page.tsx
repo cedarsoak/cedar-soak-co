@@ -4,7 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import QuickCaptureForm from "@/components/QuickCaptureForm";
-import BookingForm from "@/components/BookingForm";
+import BookingWizard from "@/components/booking/BookingWizard";
+import BookingSideCopy from "@/components/booking/BookingSideCopy";
 import StickyCta from "@/components/StickyCta";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhotoCarousel from "@/components/PhotoCarousel";
@@ -29,7 +30,7 @@ const STEPS = [
   {
     num: "04",
     title: "Relax",
-    body: "Enjoy your private cedar retreat for three nights — date night, a birthday, or nothing at all.",
+    body: "Enjoy your private cedar retreat — two nights with the Fall Soak or three with the Cedar Soak. Date night, a birthday, or nothing at all.",
   },
   {
     num: "05",
@@ -258,16 +259,30 @@ export default function HomePage() {
           <div className="price-band reveal">
             <div className="left">
               <span className="eyebrow" style={{ color: "var(--ember-light)" }}>
-                Starting rate
+                Choose your escape
               </span>
-              <div className="big-num">
-                $747<sup>/ 3 nights</sup>
+              <div className="offer-pair">
+                <a className="offer" href="/book?nights=2">
+                  <span className="offer-name">Fall Soak</span>
+                  <span className="offer-nights">2 nights</span>
+                  <span className="offer-price">$549</span>
+                  <span className="offer-go">Book the Fall Soak &rarr;</span>
+                </a>
+                <a className="offer" href="/book?nights=3">
+                  <span className="offer-name">Cedar Soak</span>
+                  <span className="offer-nights">3 nights</span>
+                  <span className="offer-price">$747</span>
+                  <span className="offer-go">Book the Cedar Soak &rarr;</span>
+                </a>
               </div>
-              <p>Every escape includes delivery, setup, a personal walkthrough, and pickup. No hidden fees, no plumbing required.</p>
+              <p>
+                Both include delivery within 15 miles, setup, a personal walkthrough, and pickup. No plumbing required.
+                Staying longer? Extra nights are $249.
+              </p>
             </div>
                         <div className="right">
-              <a href="#book" className="btn btn-white">
-                Request to book
+              <a href="#book" className="btn btn-primary">
+                Check dates &amp; book
               </a>
             </div>
           </div>
@@ -293,25 +308,9 @@ export default function HomePage() {
       <section id="book" className="section-sky">
         <div className="wrap">
           <div className="form-wrap">
-            <div className="form-side reveal">
-              <span className="eyebrow">Get in touch</span>
-              <h2>Tell us about your escape.</h2>
-              <p>Share your preferred dates and location, and we&apos;ll confirm availability and delivery details within one business day.</p>
-              <div className="form-meta">
-                <div className="row">
-                  <span className="dot"></span> Serving Dayton, Kettering, Beavercreek, Centerville, Miamisburg, Huber
-                  Heights &amp; surrounding communities.
-                </div>
-                <div className="row">
-                  <span className="dot"></span> 937-604-6399 &middot; cedarsoak@gmail.com
-                </div>
-                <div className="row">
-                  <span className="dot"></span> Most weekends book 1&ndash;2 weeks in advance.
-                </div>
-              </div>
-            </div>
+            <BookingSideCopy heading="Tell us about your escape." />
 
-            <BookingForm />
+            <BookingWizard />
           </div>
         </div>
       </section>

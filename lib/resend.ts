@@ -4,6 +4,11 @@ import { Resend } from "resend";
 // Project Settings -> Environment Variables (never commit the real key).
 export const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Used by the booking emails (lib/emails.ts).
+export function getResendClient(): Resend {
+  return resend;
+}
+
 export const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || "cedarsoak@gmail.com";
 
 // Using Resend's shared sending domain to start. Once cedarsoak.co is

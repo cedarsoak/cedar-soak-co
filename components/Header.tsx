@@ -35,7 +35,7 @@ export default function Header() {
               </a>
             ))}
             <a href="/#book" className="nav-cta">
-              Request to book
+              Book your dates
             </a>
           </nav>
           <button
@@ -60,8 +60,11 @@ export default function Header() {
         <a href="/contact-cedar-soak" onClick={() => setMenuOpen(false)}>
           Contact
         </a>
+        <a href="/account" onClick={() => setMenuOpen(false)}>
+          My rental
+        </a>
         <a href="/#book" className="mm-cta" onClick={() => setMenuOpen(false)}>
-          Request to book
+          Book your dates
         </a>
       </div>
     </>
