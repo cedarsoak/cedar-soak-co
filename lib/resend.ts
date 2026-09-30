@@ -14,7 +14,9 @@ export const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || "cedarsoak@gmail
 // Using Resend's shared sending domain to start. Once cedarsoak.co is
 // verified in the Resend dashboard, change this to something like
 // "Cedar Soak Co. <hello@cedarsoak.co>" for better deliverability.
-export const FROM_EMAIL = "Cedar Soak Co. Website <onboarding@resend.dev>";
+// Set RESEND_FROM in Vercel (e.g. "Cedar Soak Co. <bookings@cedarsoak.co>") once the
+// domain is verified in Resend. Until then Resend only delivers to the account owner.
+export const FROM_EMAIL = process.env.RESEND_FROM || "Cedar Soak Co. Website <onboarding@resend.dev>";
 
 function escapeHtml(value: string): string {
   return value

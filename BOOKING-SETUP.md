@@ -63,8 +63,7 @@ Add these in Vercel → Settings → Environment Variables:
 Confirmation emails, waiver links and payment links go to **customers**. Resend's shared test sender (`onboarding@resend.dev`) can only email the address that owns the Resend account, so **customer emails won't arrive until you verify `cedarsoak.co`**:
 
 1. Resend → **Domains → Add domain** → `cedarsoak.co` → add the DNS records it shows at your domain registrar.
-2. Once it says *Verified*, open `lib/resend.ts` and change `FROM_EMAIL` to  
-   `"Cedar Soak Co. <bookings@cedarsoak.co>"`, then commit and push.
+2. Once it says *Verified*, add an environment variable in Vercel: `RESEND_FROM` = `Cedar Soak Co. <bookings@cedarsoak.co>`, then redeploy. No code change needed.
 
 (Owner notifications to cedarsoak@gmail.com work even before this step.)
 
