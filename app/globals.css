@@ -321,6 +321,7 @@
   .offer-go{ font-size:13px; font-weight:600; color:var(--ember-dark); margin-top:10px; }
   .offer:hover .offer-go{ color:var(--ember); }
   @media (max-width: 640px){
+    .price-band .left:has(.offer-pair){ flex:0 1 auto; max-width:none; width:100%; }
     .offer-pair{ gap:10px; }
     .offer{ padding:16px 14px 14px; }
     .offer-name{ font-size:20px; }

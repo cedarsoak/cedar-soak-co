@@ -258,7 +258,7 @@ export default function HomePage() {
         <div className="wrap">
           <div className="price-band reveal">
             <div className="left">
-              <span className="eyebrow" style={{ color: "var(--ember-light)" }}>
+              <span className="eyebrow">
                 Choose your escape
               </span>
               <div className="offer-pair">
@@ -266,13 +266,13 @@ export default function HomePage() {
                   <span className="offer-name">Fall Soak</span>
                   <span className="offer-nights">2 nights</span>
                   <span className="offer-price">$549</span>
-                  <span className="offer-go">Book the Fall Soak &rarr;</span>
+                  <span className="offer-go">Reserve &rarr;</span>
                 </a>
                 <a className="offer" href="/book?nights=3">
                   <span className="offer-name">Cedar Soak</span>
                   <span className="offer-nights">3 nights</span>
                   <span className="offer-price">$747</span>
-                  <span className="offer-go">Book the Cedar Soak &rarr;</span>
+                  <span className="offer-go">Reserve &rarr;</span>
                 </a>
               </div>
               <p>
