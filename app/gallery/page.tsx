@@ -44,14 +44,23 @@ export default function GalleryPage() {
               <span className="eyebrow" style={{ color: "var(--ember-light)" }}>
                 Ready to book?
               </span>
-              <div className="big-num">
-                $747<sup>/ 3 nights</sup>
+              <div className="offer-pair">
+                <a className="offer" href="/book?nights=2">
+                  <span className="offer-name">Fall Soak</span>
+                  <span className="offer-nights">2 nights</span>
+                  <span className="offer-price">$549</span>
+                </a>
+                <a className="offer" href="/book?nights=3">
+                  <span className="offer-name">Cedar Soak</span>
+                  <span className="offer-nights">3 nights</span>
+                  <span className="offer-price">$747</span>
+                </a>
               </div>
-              <p>Every escape includes delivery, setup, a personal walkthrough, and pickup.</p>
+              <p>Both include delivery within 15 miles, setup, a personal walkthrough, and pickup. Extra nights are $249.</p>
             </div>
             <div className="right">
-              <a href="/#book" className="btn btn-primary">
-                Request to book
+              <a href="/book" className="btn btn-primary">
+                Book your dates
               </a>
             </div>
           </div>

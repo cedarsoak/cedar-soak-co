@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: "How much does it cost to rent a hot tub?",
-    a: "The daily rate is $249, with a 3-day minimum. Understand that the first day will require roughly 2.5 hours to fill the unit and another 6–10 hours to heat, depending on the external temperature and water temperature.",
+    a: "Our Cedar Soak is 3 nights for $747, and each extra night is $249. We also offer the Fall Soak: 2 nights for $549. Delivery within 15 miles, setup, a personal walkthrough, and pickup are included. Plan on the first day needing roughly 2.5 hours to fill the tub and another 6–10 hours to heat, depending on the outside and water temperature.",
   },
   {
     q: "How far does Cedar Soak Co. deliver in Ohio?",
@@ -36,11 +36,11 @@ const FAQS = [
   },
   {
     q: "What is the minimum or maximum rental period?",
-    a: "We offer flexible short-term rentals starting from a weekend up to a week or more. Perfect for romantic getaways, parties, or weekends. There's no strict maximum, but longer rentals may require special arrangements — contact us for options.",
+    a: "Our standard minimum is 3 nights (the Cedar Soak). Seasonal offers and promotions, like the 2-night Fall Soak, may allow a shorter stay. Stays of up to a week can be booked online; for anything longer, contact us and we'll work out the details.",
   },
   {
     q: "What is your cancellation policy?",
-    a: "Cancellations made at least 7 days before your delivery date will receive a full refund of your deposit. For cancellations within 7 days, the deposit may be forfeited or partially refunded depending on circumstances. Please notify us as soon as possible to discuss.",
+    a: "Cancellations made at least 48 hours before your delivery date will receive a full refund of your deposit. Cancellations with less than 48 hours' notice forfeit the deposit. Please notify us as soon as possible if your plans change.",
   },
   {
     q: "Are your hot tubs safe to use?",
@@ -108,8 +108,8 @@ export default function FaqPage() {
               <p>937-604-6399 &middot; cedarsoak@gmail.com</p>
             </div>
             <div className="right">
-              <a href="/#book" className="btn btn-primary">
-                Request to book
+              <a href="/book" className="btn btn-primary">
+                Book your dates
               </a>
             </div>
           </div>

@@ -18,6 +18,8 @@ export default function Footer() {
             <Link href="/#heat">Heat options</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/hot-tub-faqs">FAQs</Link>
+            <Link href="/book">Book online</Link>
+            <Link href="/account">My rental</Link>
           </div>
           <div className="footer-col">
             <h4>Contact</h4>

@@ -19,11 +19,11 @@ export default function StickyCta() {
   return (
     <div className={`sticky-cta${show ? " show" : ""}`}>
       <div className="info">
-        Starting at
-        <strong>$747 / 3 nights</strong>
+        2 or 3 nights
+        <strong>$549 &middot; $747</strong>
       </div>
       <a href="#book" className="btn btn-primary">
-        Request to book
+        Book now
       </a>
     </div>
   );

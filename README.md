@@ -11,6 +11,10 @@ Next.js 16 (App Router) + TypeScript site for Cedar Soak Co., built for deployme
 - `app/globals.css` — all styling, ported directly from the approved design
 - `public/` — the hero video files and poster image
 
+## Online booking & admin
+
+Live booking (`/book`), online waivers, Stripe deposits and the owner admin (`/admin`) are documented in **[BOOKING-SETUP.md](BOOKING-SETUP.md)**, including the one-time setup of the database, Stripe and admin password.
+
 ## Running it locally
 
 You'll need [Node.js](https://nodejs.org) 20.9 or newer installed.

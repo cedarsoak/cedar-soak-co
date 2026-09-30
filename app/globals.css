@@ -302,6 +302,30 @@
     font-size:13px;
     color:var(--text-light-soft);
   }
+  /* two featured stays (price band) */
+  .price-band .left:has(.offer-pair){ max-width:640px; flex:1 1 520px; }
+  .offer-pair{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px; }
+  .offer{
+    display:flex; flex-direction:column; gap:4px;
+    padding:22px 24px 20px;
+    border-radius:var(--radius-lg);
+    border:1px solid rgba(17,17,17,0.10);
+    background:#FFFFFF;
+    box-shadow:var(--shadow-card);
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .offer:hover{ border-color:var(--ember); transform:translateY(-2px); box-shadow:0 24px 44px -24px rgba(0,0,0,0.28); }
+  .offer-name{ font-family: var(--font-fraunces), serif; font-size:24px; font-weight:600; color:var(--text-dark); line-height:1.1; }
+  .offer-nights{ font-family: var(--font-plex-mono), monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-soft); }
+  .offer-price{ font-family: var(--font-fraunces), serif; font-size:clamp(38px, 5vw, 52px); color:var(--text-dark); line-height:1; margin-top:14px; }
+  .offer-go{ font-size:13px; font-weight:600; color:var(--ember-dark); margin-top:10px; }
+  .offer:hover .offer-go{ color:var(--ember); }
+  @media (max-width: 640px){
+    .price-band .left:has(.offer-pair){ flex:0 1 auto; max-width:none; width:100%; }
+    .offer-pair{ gap:10px; }
+    .offer{ padding:16px 14px 14px; }
+    .offer-name{ font-size:20px; }
+  }
 
   .cta-row{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px; }
   .btn{

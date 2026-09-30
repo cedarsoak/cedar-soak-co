@@ -20,7 +20,7 @@ export default function LocalBusinessSchema() {
       "Cedar Soak Co. delivers handcrafted, wood-fired and electric cedar hot tubs to backyards, cabins, and celebrations across the Dayton, Ohio area. White-glove delivery, setup, and pickup included.",
     telephone: "+1-937-604-6399",
     email: "cedarsoak@gmail.com",
-    priceRange: "$249–$747",
+    priceRange: "$549–$747",
     currenciesAccepted: "USD",
     address: {
       "@type": "PostalAddress",
@@ -44,32 +44,33 @@ export default function LocalBusinessSchema() {
     makesOffer: [
       {
         "@type": "Offer",
-        name: "Wood-Fire Cedar Hot Tub Rental",
+        name: "Fall Soak: 2-night cedar hot tub rental",
+        description:
+          "Two nights with a wood-fire, electric, or hybrid cedar hot tub. Includes delivery within 15 miles, setup, a personal walkthrough, and pickup.",
+        priceCurrency: "USD",
+        price: "549",
+        url: "https://www.cedarsoak.co/book?nights=2",
+      },
+      {
+        "@type": "Offer",
+        name: "Cedar Soak: 3-night cedar hot tub rental",
+        description:
+          "Three nights with a wood-fire, electric, or hybrid cedar hot tub. Includes delivery within 15 miles, setup, a personal walkthrough, and pickup.",
+        priceCurrency: "USD",
+        price: "747",
+        url: "https://www.cedarsoak.co/book?nights=3",
+      },
+      {
+        "@type": "Offer",
+        name: "Extra night (stays of 4+ nights)",
         priceCurrency: "USD",
         price: "249",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
           price: "249",
           priceCurrency: "USD",
-          unitText: "DAY",
-          referenceQuantity: {
-            "@type": "QuantitativeValue",
-            minValue: 3,
-            unitText: "DAY",
-          },
+          unitText: "NIGHT",
         },
-      },
-      {
-        "@type": "Offer",
-        name: "Electric Cedar Hot Tub Rental",
-        priceCurrency: "USD",
-        price: "249",
-      },
-      {
-        "@type": "Offer",
-        name: "Hybrid Wood-Fire / Electric Cedar Hot Tub Rental",
-        priceCurrency: "USD",
-        price: "249",
       },
     ],
   };
