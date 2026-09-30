@@ -40,6 +40,10 @@ export async function payBalance(id: string): Promise<void> {
   const t = computeTotals(b, await getPayments(b.id));
   if (t.price.deliveryCents === null) fail("We're still confirming your delivery fee. We'll email you when your balance is ready.", b.ref);
   if (t.balanceDueCents < 50) done("Your rental is paid in full.", b.ref);
+  // If we've already sent an invoice for the balance, send them there instead of charging twice.
+  const payments = await getPayments(b.id);
+  const openInvoice = payments.find((p) => p.status === "pending" && p.kind === "balance" && p.stripeInvoiceId && p.checkoutUrl);
+  if (openInvoice) redirect(openInvoice.checkoutUrl!);
   const { url } = await createCheckoutForBooking({
     booking: b,
     kind: "balance",

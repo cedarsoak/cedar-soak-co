@@ -42,6 +42,7 @@ export interface Booking {
   discountNote: string | null;
   creditCents: number;
   creditNote: string | null;
+  stripeCustomerId: string | null;
   extrasCents: number;
   extrasNote: string | null;
   depositCents: number;
@@ -66,6 +67,7 @@ export interface Payment {
   refundOf: string | null;
   stripeSessionId: string | null;
   stripePaymentIntent: string | null;
+  stripeInvoiceId: string | null;
   checkoutUrl: string | null;
   note: string | null;
   createdAt: Date;
@@ -130,6 +132,7 @@ export function mapBooking(r: any): Booking {
     discountCents: Number(r.discount_cents),
     creditCents: Number(r.credit_cents ?? 0),
     creditNote: r.credit_note ?? null,
+    stripeCustomerId: r.stripe_customer_id ?? null,
     discountNote: r.discount_note,
     extrasCents: Number(r.extras_cents),
     extrasNote: r.extras_note,
@@ -157,6 +160,7 @@ export function mapPayment(r: any): Payment {
     refundOf: r.refund_of,
     stripeSessionId: r.stripe_session_id,
     stripePaymentIntent: r.stripe_payment_intent,
+    stripeInvoiceId: r.stripe_invoice_id ?? null,
     checkoutUrl: r.checkout_url,
     note: r.note,
     createdAt: toDate(r.created_at) as Date,

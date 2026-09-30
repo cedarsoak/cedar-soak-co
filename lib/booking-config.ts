@@ -129,6 +129,8 @@ export const BOOKING = {
 
   /** Hours of notice needed to get the deposit back when cancelling (Rental Agreement, section 8). */
   cancellationNoticeHours: 48,
+  /** Days the client has to pay a balance or damage invoice (Stripe Invoicing). */
+  invoiceDaysUntilDue: 7,
 
   businessName: "Cedar Soak Co.",
   businessPhone: "937-604-6399",

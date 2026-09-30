@@ -1,11 +1,11 @@
 import { BOOKING, luxAvailable } from "./booking-config";
-import { Booking, bonusNightEligible, computeTotals, getBooking, getPayments, insertPayment, isRangeAvailable, Payment } from "./bookings";
+import { Booking, bonusNightEligible, computeTotals, getBooking, getPayments, insertPayment, isRangeAvailable, mapPayment, Payment } from "./bookings";
 import { accountLink } from "./customer-auth";
 import { query, sql } from "./db";
 import { formatDate, hoursUntilRentalStart, pickupDate, todayIso } from "./dates";
 import { sendBookingChangedEmails, sendCancellationEmails } from "./emails";
 import { bonusNightQualifies, dollars, packageCents, packageLabel } from "./pricing";
-import { getStripe, isStripeConfigured } from "./stripe";
+import { getStripe, isStripeConfigured, closeStripePayment } from "./stripe";
 import { revokeCreditsFrom } from "./referrals";
 
 // What renters can do themselves from their account page.
@@ -128,6 +128,8 @@ export async function cancelByCustomer(b: Booking): Promise<PortalResult> {
   }
 
   // Close any unpaid payment links.
+  const pending = await query(`SELECT * FROM payments WHERE booking_id = $1 AND status = 'pending'`, [b.id]);
+  for (const row of pending) await closeStripePayment(mapPayment(row));
   await query(`UPDATE payments SET status = 'expired' WHERE booking_id = $1 AND status = 'pending'`, [b.id]);
   const depositStatus = refundDeposit ? (ownerTodo.some((t) => t.includes("deposit")) ? b.depositStatus : "refunded") : "retained";
   await sql`

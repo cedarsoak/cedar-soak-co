@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
-import { expireCheckoutSession, finalizeCheckoutSession } from "@/lib/booking-service";
+import { closeInvoice, expireCheckoutSession, finalizeCheckoutSession, finalizeInvoicePaid } from "@/lib/booking-service";
 import { getStripe } from "@/lib/stripe";
 
 export const dynamic = "force-dynamic";
 
-// Stripe calls this when a checkout is paid or expires.
+// Stripe calls this when a checkout or invoice is paid, fails, expires or is voided.
 // Endpoint: https://www.cedarsoak.co/api/stripe/webhook (see BOOKING-SETUP.md)
 export async function POST(request: Request) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -31,6 +31,20 @@ export async function POST(request: Request) {
         break;
       case "checkout.session.expired":
         await expireCheckoutSession(event.data.object as Stripe.Checkout.Session);
+        break;
+      case "checkout.session.async_payment_failed":
+        await expireCheckoutSession(event.data.object as Stripe.Checkout.Session, "failed");
+        break;
+      case "invoice.paid":
+        await finalizeInvoicePaid(event.data.object as Stripe.Invoice);
+        break;
+      case "invoice.voided":
+      case "invoice.marked_uncollectible":
+        await closeInvoice(event.data.object as Stripe.Invoice);
+        break;
+      case "invoice.payment_failed":
+        // The invoice stays open and the hosted page lets the client try another card.
+        console.warn("stripe invoice payment failed", (event.data.object as Stripe.Invoice).id);
         break;
       default:
         break;

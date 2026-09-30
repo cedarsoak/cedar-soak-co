@@ -35,13 +35,16 @@ That's it — the tables are created automatically the first time someone opens 
 ## 3. Set up Stripe (card payments)
 
 1. Create an account at **stripe.com** and finish the business verification (bank account for payouts, EIN/SSN). Stripe charges 2.9% + 30¢ per card payment.
-2. **Start in test mode** (toggle top right in the Stripe dashboard). Go to **Developers → API keys** and copy the **Secret key** (`sk_test_...`).
+2. **Start in your sandbox / test mode.** Go to **Developers → API keys** and create a **restricted key** (`rk_test_...`). It's safer than the full secret key because it can only do what the site needs. Give it **Write** access to: Checkout Sessions, Customers, Invoices, Invoice Items, Refunds; and **Read** access to PaymentIntents. Leave everything else at None. (The full secret key `sk_test_...` also works if you prefer.)
 3. In Vercel → Project → **Settings → Environment Variables**, add:
-   - `STRIPE_SECRET_KEY` = the secret key
+   - `STRIPE_SECRET_KEY` = the restricted key (or secret key)
 4. In Stripe → **Developers → Webhooks → Add endpoint**:
    - Endpoint URL: `https://www.cedarsoak.co/api/stripe/webhook`
-   - Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.expired`
+   - Events: `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed`, `checkout.session.expired`, `invoice.paid`, `invoice.payment_failed`, `invoice.voided`, `invoice.marked_uncollectible`
    - After saving, click **Reveal** under *Signing secret* and add it in Vercel as `STRIPE_WEBHOOK_SECRET` (`whsec_...`).
+
+5. **Branding** (Settings → Branding): upload the logo and set the brand color to `#AC8A46`. It's used on checkout pages, invoices and receipts. Under **Settings → Public details**, set the statement descriptor to `CEDAR SOAK`.
+6. **Invoices** (Settings → Billing → Invoices): turn on **reminder emails** for overdue invoices if you want Stripe to nudge clients. The site already emails the invoice link itself. (Stripe doesn't send customer emails in test mode.)
 
 When you're ready for real payments, switch Stripe to live mode, repeat steps 2–4 with the **live** keys, replace both values in Vercel, and redeploy.
 
@@ -98,9 +101,9 @@ Confirmation emails, waiver links and payment links go to **customers**. Resend'
 
 **Delivery fee:** The site estimates the distance from Oakwood from the customer's address. If it's over 15 miles, the fee shows as an estimate; if the address couldn't be matched, it says "we'll confirm". Open the booking → *Edit booking details* → set **Delivery miles** → Save. The fee and balance update automatically. The dashboard flags bookings where this still needs doing.
 
-**Collecting the balance:** Booking → Billing → *Request a payment* → the amount is pre-filled with the balance → the client gets a Stripe link by email (valid 23 hours). Paid cash or Venmo instead? Use *Record a payment received*.
+**Collecting the balance:** Booking → Billing → *Request a payment* → the amount is pre-filled with the balance → the client gets a **Stripe invoice** by email, due in 7 days (change `invoiceDaysUntilDue` in `lib/booking-config.ts`). It's marked paid here automatically when they pay, and shows under the client in Stripe → Invoices. *Cancel* voids the invoice. If the client presses "Pay balance" in their account while an invoice is open, they're sent to that invoice, so they can't pay twice. Paid cash or Venmo instead? Use *Record a payment received*, then cancel the invoice.
 
-**After pickup:** Deposit row → **Refund** (goes back to their card), or *Deposit after pickup* → **Kept for damage**. Damage above the $249 deposit → *Request a payment* → Damage charge. Then **Mark completed**.
+**After pickup:** Deposit row → **Refund** (goes back to their card), or *Deposit after pickup* → **Kept for damage**. Damage above the $249 deposit → *Request a payment* → Damage charge (sent as a Stripe invoice). Then **Mark completed**.
 
 **Phone/text bookings:** **+ New booking** → fill in → then send the deposit link and the **waiver signing link** from the booking page (or copy the link and text it).
 

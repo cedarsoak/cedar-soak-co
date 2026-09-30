@@ -158,15 +158,19 @@ export async function sendBookingConfirmedEmails(
   });
 }
 
-export async function sendPaymentLinkEmail(b: Booking, url: string, amountCents: number, what: string): Promise<boolean> {
+export async function sendPaymentLinkEmail(b: Booking, url: string, amountCents: number, what: string, dueInDays: number | null = null): Promise<boolean> {
   return send({
     to: b.email,
-    subject: `Cedar Soak payment link — ${what} (${b.ref})`,
+    subject: `Cedar Soak ${dueInDays ? "invoice" : "payment link"} — ${what} (${b.ref})`,
     html: renderCustomerEmail({
       title: `${what}: ${dollars(amountCents)}`,
       intro: [`Hi ${b.firstName}, here's a secure payment link for your Cedar Soak rental (${formatRange(b.startDate, b.endDate)}).`],
       cta: { label: `Pay ${dollars(amountCents)}`, url },
-      outro: ["The link is powered by Stripe and expires in 24 hours. If it expires, just reply and we'll send a new one."],
+      outro: [
+        dueInDays
+          ? `This is a secure Stripe invoice, due within ${dueInDays} days. You can pay by card or wallet, and Stripe emails your receipt.`
+          : "The link is powered by Stripe and expires in 24 hours. If it expires, just reply and we'll send a new one.",
+      ],
     }),
   });
 }

@@ -20,7 +20,7 @@ import { earliestBookableDate, isIsoDate, latestBookableDate, pickupDate } from 
 import { sendBookingConfirmedEmails, sendPaymentReceivedOwnerEmail, sendWaiverSignedCustomerEmail, sendWaiverSignedOwnerEmail } from "./emails";
 import { accountLink } from "./customer-auth";
 import { applyAvailableCredits, availableCreditCents as creditFor, grantReferralCredit } from "./referrals";
-import { siteUrl } from "./stripe";
+import { paymentIntentForInvoice, siteUrl } from "./stripe";
 import { estimateDeliveryMiles } from "./geocode";
 import { bonusNightQualifies, computePrice, dollars, packageCents, packageLabel, PriceBreakdown } from "./pricing";
 import { buildWaiverPdf } from "./waiver-pdf";
@@ -323,12 +323,54 @@ export async function finalizeCheckoutSession(session: Stripe.Checkout.Session):
   return booking;
 }
 
-export async function expireCheckoutSession(session: Stripe.Checkout.Session): Promise<void> {
+export async function expireCheckoutSession(
+  session: Stripe.Checkout.Session,
+  outcome: "expired" | "failed" = "expired"
+): Promise<void> {
   const paymentId = session.metadata?.payment_id;
   const bookingId = session.metadata?.booking_id;
   if (!paymentId) return;
-  const rows = await sql`UPDATE payments SET status = 'expired' WHERE id = ${paymentId} AND status = 'pending' RETURNING kind`;
+  // A delayed payment (e.g. bank debit) that later fails arrives as async_payment_failed.
+  const rows = await sql`UPDATE payments SET status = ${outcome} WHERE id = ${paymentId} AND status = 'pending' RETURNING kind`;
   if (rows[0]?.kind === "deposit" && bookingId) {
     await sql`UPDATE bookings SET status = 'expired', hold_expires_at = NULL, updated_at = now() WHERE id = ${bookingId} AND status = 'pending'`;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Stripe Invoicing (balance, damage and other charges)
+// ---------------------------------------------------------------------------
+
+/** invoice.paid → mark the payment paid (idempotent) and tell the owner. */
+export async function finalizeInvoicePaid(invoice: Stripe.Invoice): Promise<Booking | null> {
+  const paymentId = invoice.metadata?.payment_id;
+  const bookingId = invoice.metadata?.booking_id;
+  if (!paymentId || !bookingId || !invoice.id) return null;
+
+  let intent: string | null = null;
+  try {
+    intent = await paymentIntentForInvoice(invoice.id);
+  } catch (err) {
+    console.error("could not look up invoice payment", err);
+  }
+  const updated = await query(
+    `UPDATE payments SET status = 'paid', paid_at = now(), stripe_payment_intent = COALESCE($2, stripe_payment_intent),
+            amount_cents = COALESCE($3::int, amount_cents)
+     WHERE id = $1 AND status <> 'paid' RETURNING *`,
+    [paymentId, intent, invoice.amount_paid ?? null]
+  );
+  const booking = await getBooking(bookingId);
+  if (updated.length === 0 || !booking) return booking;
+  const payment = mapPayment(updated[0]);
+  await sql`UPDATE bookings SET updated_at = now() WHERE id = ${bookingId}`;
+  const what = payment.kind === "damage" ? "Damage charge" : payment.kind === "balance" ? "Rental balance" : "Payment";
+  await sendPaymentReceivedOwnerEmail(booking, payment.amountCents, `${what} (invoice ${invoice.number ?? invoice.id})`);
+  return booking;
+}
+
+/** invoice.voided / invoice.marked_uncollectible → close the pending payment. */
+export async function closeInvoice(invoice: Stripe.Invoice): Promise<void> {
+  const paymentId = invoice.metadata?.payment_id;
+  if (!paymentId) return;
+  await sql`UPDATE payments SET status = 'expired' WHERE id = ${paymentId} AND status = 'pending'`;
 }

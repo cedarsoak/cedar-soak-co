@@ -17,7 +17,7 @@ import { query, sql } from "@/lib/db";
 import { isIsoDate, pickupDate } from "@/lib/dates";
 import { sendPaymentLinkEmail, sendWaiverLinkEmail } from "@/lib/emails";
 import { dollars, packageCents, parseDollarsToCents } from "@/lib/pricing";
-import { createCheckoutForBooking, getStripe, isStripeConfigured, LinkKind, siteUrl } from "@/lib/stripe";
+import { closeStripePayment, createCheckoutForBooking, createInvoiceForBooking, getStripe, isStripeConfigured, LinkKind, paymentIntentForInvoice, siteUrl } from "@/lib/stripe";
 
 const back = (id: string, msg: string, anchor = ""): never =>
   redirect(`/admin/bookings/${id}?msg=${encodeURIComponent(msg)}${anchor ? `#${anchor}` : ""}`);
@@ -235,18 +235,25 @@ export async function sendPaymentLink(id: string, fd: FormData): Promise<void> {
   if (!amount || amount < 50) backErr(id, "Enter an amount of at least $0.50.", "payments");
   const description = s(fd, "description", 200) || undefined;
 
+  // Deposits use a Checkout page (it confirms the booking); everything else is a Stripe Invoice.
+  const asInvoice = kind !== "deposit";
   let url = "";
   try {
-    const result = await createCheckoutForBooking({
-      booking: booking!,
-      kind,
-      amountCents: amount!,
-      expiresInMinutes: 23 * 60,
-      successPath: "/book/confirmed",
-      cancelPath: "/",
-      description,
-    });
-    url = result.url;
+    if (asInvoice) {
+      const result = await createInvoiceForBooking({ booking: booking!, kind: kind as Exclude<LinkKind, "deposit">, amountCents: amount!, description });
+      url = result.url;
+    } else {
+      const result = await createCheckoutForBooking({
+        booking: booking!,
+        kind,
+        amountCents: amount!,
+        expiresInMinutes: 23 * 60,
+        successPath: "/book/confirmed",
+        cancelPath: "/",
+        description,
+      });
+      url = result.url;
+    }
   } catch (err) {
     if (isErrorRedirect(err)) throw err;
     console.error("payment link error", err);
@@ -254,10 +261,10 @@ export async function sendPaymentLink(id: string, fd: FormData): Promise<void> {
   }
   const what = { deposit: "Reservation deposit", balance: "Rental balance", damage: "Damage charge", other: "Payment" }[kind];
   let emailed = false;
-  if (fd.get("email") === "on") emailed = await sendPaymentLinkEmail(booking!, url, amount!, what);
+  if (fd.get("email") === "on") emailed = await sendPaymentLinkEmail(booking!, url, amount!, what, asInvoice ? BOOKING.invoiceDaysUntilDue : null);
   back(
     id,
-    `${what} link for ${dollars(amount)} created${emailed ? ` and emailed to ${booking!.email}` : fd.get("email") === "on" ? " (email could not be sent — copy the link below)" : ""}. It's valid for 23 hours.`,
+    `${what} ${asInvoice ? "invoice" : "link"} for ${dollars(amount)} created${emailed ? ` and emailed to ${booking!.email}` : fd.get("email") === "on" ? " (email could not be sent — copy the link below)" : ""}. ${asInvoice ? `It's due in ${BOOKING.invoiceDaysUntilDue} days; Stripe sends reminders.` : "It's valid for 23 hours."}`,
     "payments"
   );
 }
@@ -267,13 +274,7 @@ export async function cancelPaymentLink(bookingId: string, paymentId: string): P
   const rows = await sql`SELECT * FROM payments WHERE id = ${paymentId} AND booking_id = ${bookingId}`;
   const p = rows[0] ? mapPayment(rows[0]) : null;
   if (!p || p.status !== "pending") back(bookingId, "Link already closed.", "payments");
-  if (p!.stripeSessionId && isStripeConfigured()) {
-    try {
-      await getStripe().checkout.sessions.expire(p!.stripeSessionId);
-    } catch (err) {
-      console.warn("could not expire session", err);
-    }
-  }
+  await closeStripePayment(p!);
   await sql`UPDATE payments SET status = 'expired' WHERE id = ${paymentId} AND status = 'pending'`;
   back(bookingId, "Payment link cancelled.", "payments");
 }
@@ -290,13 +291,15 @@ export async function refundPayment(bookingId: string, paymentId: string, fd: Fo
 
   let method = original!.method;
   let note = s(fd, "note", 200) || null;
-  if (original!.method === "stripe" && original!.stripePaymentIntent) {
+  let intent = original!.stripePaymentIntent;
+  if (!intent && original!.stripeInvoiceId && isStripeConfigured()) intent = await paymentIntentForInvoice(original!.stripeInvoiceId).catch(() => null);
+  if (original!.method === "stripe" && intent) {
     try {
       const refund = await getStripe().refunds.create({
-        payment_intent: original!.stripePaymentIntent,
+        payment_intent: intent,
         amount,
         metadata: { booking_id: bookingId, payment_id: paymentId },
-      });
+      }, { idempotencyKey: `refund-${paymentId}-${amount}-${Number(already[0]?.r ?? 0)}` });
       note = [note, `Stripe refund ${refund.id}`].filter(Boolean).join(" · ");
     } catch (err) {
       console.error("stripe refund error", err);

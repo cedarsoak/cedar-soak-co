@@ -121,6 +121,9 @@ const SCHEMA: string[] = [
     reason text,
     created_at timestamptz NOT NULL DEFAULT now()
   )`,
+  // Stripe customers + invoices (balance and damage charges are billed as Stripe Invoices)
+  `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS stripe_customer_id text`,
+  `ALTER TABLE payments ADD COLUMN IF NOT EXISTS stripe_invoice_id text UNIQUE`,
 ];
 
 async function ensureSchema(): Promise<void> {
