@@ -196,7 +196,7 @@
     padding-bottom:0;
   }
   .hero-media{ position:relative; width:100%; overflow:hidden; }
-  .hero-img{ position:relative; width:100%; aspect-ratio:1536/620; display:block; }
+  .hero-img{ position:relative; width:100%; aspect-ratio:1619/971; display:block; }
   .hero-img-mobile{ display:none; }
   @media (max-width:768px){
     .hero{ padding-top:72px; }
