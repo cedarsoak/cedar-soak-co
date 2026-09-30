@@ -80,8 +80,17 @@ export default async function AdminDashboard({
     listBlocked(gridStart),
     listBookings("upcoming", "", today),
     query(
-      `SELECT COALESCE(SUM(amount_cents), 0)::int AS total FROM payments
-       WHERE status = 'paid' AND kind <> 'deposit' AND paid_at >= date_trunc('year', now())`
+      // Deposits and deposit refunds are money held for the client, not income.
+      // A deposit kept for damage or applied to the rental (retained / applied) counts as income.
+      `SELECT COALESCE(SUM(p.amount_cents), 0)::int AS total
+       FROM payments p JOIN bookings b ON b.id = p.booking_id
+       LEFT JOIN payments orig ON orig.id = p.refund_of
+       WHERE p.status = 'paid' AND p.paid_at >= date_trunc('year', now())
+         AND (
+           (p.kind NOT IN ('deposit', 'refund'))
+           OR (p.kind = 'refund' AND orig.kind <> 'deposit')
+           OR (b.deposit_status IN ('retained', 'applied') AND (p.kind = 'deposit' OR (p.kind = 'refund' AND orig.kind = 'deposit')))
+         )`
     ),
   ]);
   const depositRows = await query(
@@ -132,7 +141,7 @@ export default async function AdminDashboard({
         <div className="ad-kpi">
           <span>Rental income {today.slice(0, 4)}</span>
           <strong>{dollars(Number(yearRows[0]?.total ?? 0))}</strong>
-          <small>excludes deposits</small>
+          <small>excludes refundable deposits</small>
         </div>
       </div>
 
