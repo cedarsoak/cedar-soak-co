@@ -111,14 +111,22 @@ const INTEGRATION_ID = "cedarsoak_booking_rkvtwqmz";
  * for a client sits together in the Stripe Dashboard. Stored on the booking.
  */
 export async function ensureStripeCustomer(booking: Booking): Promise<string> {
-  if (booking.stripeCustomerId) return booking.stripeCustomerId;
   const stripe = getStripe();
   const email = booking.email.trim().toLowerCase();
 
-  // Reuse an ID already saved on another booking with this email, then Stripe itself.
-  const saved = await sql`SELECT stripe_customer_id FROM bookings
-    WHERE lower(email) = ${email} AND stripe_customer_id IS NOT NULL LIMIT 1`;
+  // Reuse an ID saved on this or another booking with this email — but only if it exists
+  // in the Stripe account the site is using now (IDs saved in test mode don't exist in live mode).
+  const saved = booking.stripeCustomerId
+    ? [{ stripe_customer_id: booking.stripeCustomerId }]
+    : await sql`SELECT stripe_customer_id FROM bookings
+        WHERE lower(email) = ${email} AND stripe_customer_id IS NOT NULL LIMIT 1`;
   let id: string | null = saved[0]?.stripe_customer_id ?? null;
+  if (id && !(await customerExists(id))) {
+    await sql`UPDATE bookings SET stripe_customer_id = NULL WHERE stripe_customer_id = ${id}`;
+    booking.stripeCustomerId = null;
+    id = null;
+  }
+  if (id && booking.stripeCustomerId === id) return id;
   if (!id) {
     const existing = await stripe.customers.list({ email, limit: 1 });
     id = existing.data[0]?.id ?? null;
@@ -139,6 +147,17 @@ export async function ensureStripeCustomer(booking: Booking): Promise<string> {
   await sql`UPDATE bookings SET stripe_customer_id = ${id} WHERE lower(email) = ${email} AND stripe_customer_id IS NULL`;
   booking.stripeCustomerId = id;
   return id;
+}
+
+async function customerExists(id: string): Promise<boolean> {
+  try {
+    const c = await getStripe().customers.retrieve(id);
+    return !("deleted" in c && c.deleted);
+  } catch (err) {
+    const e = err as { code?: string; statusCode?: number };
+    if (e?.code === "resource_missing" || e?.statusCode === 404) return false;
+    throw err;
+  }
 }
 
 const INVOICE_KIND_LABEL: Record<Exclude<LinkKind, "deposit">, string> = {
