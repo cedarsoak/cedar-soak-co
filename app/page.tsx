@@ -6,6 +6,8 @@ import Hero from "@/components/Hero";
 import QuickCaptureForm from "@/components/QuickCaptureForm";
 import BookingWizard from "@/components/booking/BookingWizard";
 import BookingSideCopy from "@/components/booking/BookingSideCopy";
+import BookingForm from "@/components/BookingForm";
+import { onlineBookingLive } from "@/lib/booking-live";
 import StickyCta from "@/components/StickyCta";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhotoCarousel from "@/components/PhotoCarousel";
@@ -108,6 +110,7 @@ const OCCASIONS = [
 ];
 
 export default function HomePage() {
+  const live = onlineBookingLive();
   return (
     <>
       <Header />
@@ -262,13 +265,13 @@ export default function HomePage() {
                 Choose your escape
               </span>
               <div className="offer-pair">
-                <a className="offer" href="/book?nights=2">
+                <a className="offer" href={live ? "/book?nights=2" : "#book"}>
                   <span className="offer-name">Fall Soak</span>
                   <span className="offer-nights">2 nights</span>
                   <span className="offer-price">$549</span>
                   <span className="offer-go">Reserve &rarr;</span>
                 </a>
-                <a className="offer" href="/book?nights=3">
+                <a className="offer" href={live ? "/book?nights=3" : "#book"}>
                   <span className="offer-name">Cedar Soak</span>
                   <span className="offer-nights">3 nights</span>
                   <span className="offer-price">$747</span>
@@ -308,9 +311,33 @@ export default function HomePage() {
       <section id="book" className="section-sky">
         <div className="wrap">
           <div className="form-wrap">
-            <BookingSideCopy heading="Tell us about your escape." />
-
-            <BookingWizard />
+            {live ? (
+              <>
+                <BookingSideCopy heading="Tell us about your escape." />
+                <BookingWizard />
+              </>
+            ) : (
+              <>
+                <div className="form-side reveal">
+                  <span className="eyebrow">Get in touch</span>
+                  <h2>Tell us about your escape.</h2>
+                  <p>Share your preferred dates and location, and we&apos;ll confirm availability and delivery details within one business day.</p>
+                  <div className="form-meta">
+                    <div className="row">
+                      <span className="dot"></span> Fall Soak: 2 nights, $549. Cedar Soak: 3 nights, $747. Extra nights $249.
+                    </div>
+                    <div className="row">
+                      <span className="dot"></span> Serving Dayton, Kettering, Beavercreek, Centerville, Miamisburg, Huber
+                      Heights &amp; surrounding communities.
+                    </div>
+                    <div className="row">
+                      <span className="dot"></span> 937-604-6399 &middot; cedarsoak@gmail.com
+                    </div>
+                  </div>
+                </div>
+                <BookingForm />
+              </>
+            )}
           </div>
         </div>
       </section>

@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingWizard from "@/components/booking/BookingWizard";
 import BookingSideCopy from "@/components/booking/BookingSideCopy";
+import BookingForm from "@/components/BookingForm";
+import { onlineBookingLive } from "@/lib/booking-live";
 import { BOOKING } from "@/lib/booking-config";
 import { dollars } from "@/lib/pricing";
 
@@ -29,7 +31,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
         <div className="wrap">
           <div className="form-wrap">
             <BookingSideCopy />
-            <BookingWizard cancelled={cancelled === "1"} />
+            {onlineBookingLive() ? <BookingWizard cancelled={cancelled === "1"} /> : <BookingForm />}
           </div>
         </div>
       </section>
