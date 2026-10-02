@@ -15,6 +15,7 @@ interface Contact {
   lastName: string;
   email: string;
   phone: string;
+  smsConsent: boolean;
   address: string;
   city: string;
   state: string;
@@ -48,6 +49,7 @@ const emptyContact: Contact = {
   lastName: "",
   email: "",
   phone: "",
+  smsConsent: false,
   address: "",
   city: "",
   state: "OH",
@@ -476,6 +478,14 @@ export default function BookingWizard({ cancelled = false }: { cancelled?: boole
               <input id="bk-ph" type="tel" autoComplete="tel" value={contact.phone} onChange={setField("phone")} required />
             </div>
           </div>
+          <label className="bk-check">
+            <input
+              type="checkbox"
+              checked={contact.smsConsent}
+              onChange={(e) => setContact({ ...contact, smsConsent: e.target.checked })}
+            />
+            <span>{BOOKING.smsConsentText}</span>
+          </label>
           <div className="field">
             <label htmlFor="bk-ad">Street address (where the tub goes)</label>
             <input id="bk-ad" autoComplete="street-address" value={contact.address} onChange={setField("address")} required />

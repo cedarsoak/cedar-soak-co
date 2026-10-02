@@ -139,6 +139,8 @@ export default async function BookingDetail({
               <dd>{b.email}</dd>
               <dt>Phone</dt>
               <dd>{b.phone || "—"}</dd>
+              <dt>OK to text</dt>
+              <dd>{b.smsConsent ? "Yes, agreed on the booking form" : "No"}</dd>
               <dt>Occasion</dt>
               <dd>{b.occasion || "—"}</dd>
               <dt>Heat</dt>

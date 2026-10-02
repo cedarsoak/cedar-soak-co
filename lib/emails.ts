@@ -138,6 +138,7 @@ export async function sendBookingConfirmedEmails(
       Name: `${b.firstName} ${b.lastName}`,
       Email: b.email,
       Phone: b.phone,
+      "OK to text": b.smsConsent ? "Yes" : "No",
       Dates: `${formatDate(b.startDate)} → ${formatDate(b.endDate)} (${b.nights} nights)`,
       Location: [b.address, b.city, b.state, b.zip].filter(Boolean).join(", "),
       "Delivery miles": b.deliveryMiles !== null ? `${b.deliveryMiles}${b.deliveryMilesEstimated ? " (estimated)" : ""}` : "Not calculated — set in admin",

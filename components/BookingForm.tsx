@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import DateRangePicker from "./DateRangePicker";
+import { BOOKING } from "@/lib/booking-config";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -29,6 +30,7 @@ export default function BookingForm({ promoCode, source }: BookingFormProps) {
           lastName: formData.get("lastName"),
           email: formData.get("email"),
           phone: formData.get("phone"),
+          smsConsent: formData.get("smsConsent") === "on",
           dates: formData.get("dates"),
           heatPreference: formData.get("heatPreference"),
           location: formData.get("location"),
@@ -82,6 +84,10 @@ export default function BookingForm({ promoCode, source }: BookingFormProps) {
           <input type="tel" id="phone" name="phone" placeholder="(937) 555-0148" required />
         </div>
       </div>
+      <label className="consent-check">
+        <input type="checkbox" name="smsConsent" />
+        <span>{BOOKING.smsConsentText}</span>
+      </label>
       <div className="field-row">
         <DateRangePicker name="dates" label="Preferred dates" />
         <div className="field">

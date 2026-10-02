@@ -16,7 +16,7 @@ export async function GET() {
   const bookings = await listBookings("all");
   const payments = await getPaymentsForBookings(bookings.map((b) => b.id));
   const header = [
-    "Ref", "Status", "Delivery date", "Pickup date", "Nights", "First name", "Last name", "Email", "Phone",
+    "Ref", "Status", "Delivery date", "Pickup date", "Nights", "First name", "Last name", "Email", "Phone", "OK to text",
     "Address", "City", "State", "ZIP", "Occasion", "Heat", "Package", "Guests", "Delivery miles",
     "Rental", "Bonus night", "Package add-on", "Delivery fee", "Discount", "Referral credit", "Extras", "Rental total",
     "Paid toward rental", "Balance due", "Deposit paid", "Deposit refunded", "Deposit status",
@@ -25,7 +25,7 @@ export async function GET() {
   const rows = bookings.map((b) => {
     const t = computeTotals(b, payments.get(b.id) ?? []);
     return [
-      b.ref, b.status, b.startDate, b.endDate, b.nights, b.firstName, b.lastName, b.email, b.phone,
+      b.ref, b.status, b.startDate, b.endDate, b.nights, b.firstName, b.lastName, b.email, b.phone, b.smsConsent ? "Yes" : "No",
       b.address, b.city, b.state, b.zip, b.occasion, b.heat, packageLabel(b.package), b.guests, b.deliveryMiles,
       money(t.price.rentalCents), money(-t.price.bonusNightCents), money(t.price.packageCents), money(t.price.deliveryCents),
       money(-t.price.discountCents), money(-t.price.creditCents), money(t.price.extrasCents), money(t.price.totalCents),
