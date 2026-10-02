@@ -9,6 +9,7 @@ export async function POST(request: Request) {
       lastName,
       email,
       phone,
+      smsConsent,
       dates,
       heatPreference,
       location,
@@ -22,6 +23,7 @@ export async function POST(request: Request) {
       lastName?: string;
       email?: string;
       phone?: string;
+      smsConsent?: boolean;
       dates?: string;
       heatPreference?: string;
       location?: string;
@@ -70,6 +72,7 @@ export async function POST(request: Request) {
         Name: `${firstName} ${lastName}`,
         Email: email,
         Phone: phone,
+        "OK to text": smsConsent === true ? "Yes" : "No — did not tick the box",
         "Preferred dates": dates,
         "Heat preference": heatPreference,
         "Delivery location": location,

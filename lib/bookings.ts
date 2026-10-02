@@ -19,6 +19,7 @@ export interface Booking {
   lastName: string;
   email: string;
   phone: string;
+  smsConsent: boolean;
   address: string;
   city: string;
   state: string;
@@ -110,6 +111,7 @@ export function mapBooking(r: any): Booking {
     lastName: r.last_name,
     email: r.email,
     phone: r.phone,
+    smsConsent: Boolean(r.sms_consent),
     address: r.address,
     city: r.city,
     state: r.state,
@@ -287,6 +289,8 @@ export interface NewBookingInput {
   lastName: string;
   email: string;
   phone: string;
+  /** Customer agreed to receive text messages. */
+  smsConsent?: boolean;
   address: string;
   city: string;
   state: string;
@@ -383,6 +387,7 @@ export async function createBooking(input: NewBookingInput): Promise<Booking> {
       input.referredBy ?? null, // $43
       input.creditCents ?? 0, // $44
       input.creditNote ?? null, // $45
+      input.smsConsent ? true : false, // $46
     ];
     try {
       const rows = await query(
@@ -392,7 +397,7 @@ export async function createBooking(input: NewBookingInput): Promise<Booking> {
            nightly_rate_cents, bonus_night, package_cents, delivery_miles, delivery_miles_estimated,
            delivery_override_cents, discount_cents, discount_note, extras_cents, extras_note,
            deposit_cents, waiver_signed_at, waiver_name, hold_expires_at, waiver_token, confirmed_at,
-           referral, promo_code, referred_by, credit_cents, credit_note
+           referral, promo_code, referred_by, credit_cents, credit_note, sms_consent
          )
          SELECT $2::text, $3::text, $4::text, $5::text, $6::text, $7::int, $8::text, $9::text, $10::text, $11::text,
                 $12::text, $13::text, $14::text, $15::text, $16::text, $17::text, $18::text, $19::int, $20::text, $21::text,
@@ -400,7 +405,7 @@ export async function createBooking(input: NewBookingInput): Promise<Booking> {
                 $27::int, $28::int, $29::text, $30::int, $31::text,
                 $32::int, $33::timestamptz, $34::text,
                 CASE WHEN $35::int IS NULL THEN NULL ELSE now() + make_interval(mins => $35::int) END,
-                $39::text, $40::timestamptz, $41::text, $42::text, $43::text, $44::int, $45::text
+                $39::text, $40::timestamptz, $41::text, $42::text, $43::text, $44::int, $45::text, $46::boolean
          WHERE $36::boolean
             OR (
               NOT EXISTS (

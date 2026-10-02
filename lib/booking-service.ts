@@ -36,6 +36,8 @@ export interface BookingRequest {
   lastName: string;
   email: string;
   phone: string;
+  /** Ticked "text me" on the booking form. */
+  smsConsent: boolean;
   address: string;
   city: string;
   state: string;
@@ -73,6 +75,7 @@ export function parseBookingRequest(body: Record<string, unknown>, opts: { requi
     lastName: str(body.lastName, 60),
     email: str(body.email, 120).toLowerCase(),
     phone: str(body.phone, 30),
+    smsConsent: body.smsConsent === true,
     address: str(body.address, 160),
     city: str(body.city, 80),
     state: str(body.state, 20) || "OH",
@@ -161,6 +164,7 @@ export function bookingFieldsFromQuote(data: BookingRequest, quote: Quote) {
     lastName: data.lastName,
     email: data.email,
     phone: data.phone,
+    smsConsent: data.smsConsent,
     address: data.address,
     city: data.city,
     state: data.state,

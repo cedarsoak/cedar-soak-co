@@ -132,6 +132,10 @@ export const BOOKING = {
   /** Days the client has to pay a balance or damage invoice (Stripe Invoicing). */
   invoiceDaysUntilDue: 7,
 
+  /** Shown next to the "text me" checkbox on the forms. Only text people who ticked it. */
+  smsConsentText:
+    "Text me updates about my booking and occasional Cedar Soak offers. Message and data rates may apply. Reply STOP to opt out anytime.",
+
   businessName: "Cedar Soak Co.",
   businessPhone: "937-604-6399",
   businessEmail: "cedarsoak@gmail.com",

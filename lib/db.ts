@@ -124,6 +124,8 @@ const SCHEMA: string[] = [
   // Stripe customers + invoices (balance and damage charges are billed as Stripe Invoices)
   `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS stripe_customer_id text`,
   `ALTER TABLE payments ADD COLUMN IF NOT EXISTS stripe_invoice_id text UNIQUE`,
+  // Did the customer tick "text me" on the booking form? (needed before sending SMS)
+  `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS sms_consent boolean NOT NULL DEFAULT false`,
 ];
 
 async function ensureSchema(): Promise<void> {
