@@ -886,6 +886,17 @@
     .gallery-full-grid .g-item{ height:220px; }
   }
 
+  /* ============ LEGAL PAGES (Privacy / Terms) ============ */
+  .legal{ max-width:760px; }
+  .legal-updated{ font-size:13.5px; color:var(--text-soft); margin-bottom:20px; }
+  .legal h2{ font-size:22px; margin:36px 0 12px; }
+  .legal p{ margin-bottom:14px; color:var(--text-dark); }
+  .legal ul{ list-style:disc; padding-left:22px; margin-bottom:14px; }
+  .legal li{ margin-bottom:8px; }
+  .legal a{ color:var(--ember-dark); font-weight:600; text-decoration:underline; }
+  .footer-legal{ display:flex; gap:18px; flex-wrap:wrap; }
+  .footer-legal a:hover{ color:var(--text-light); }
+
   /* ============ FAQ PAGE ============ */
   .faq-list{
     max-width:760px;
