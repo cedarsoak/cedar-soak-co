@@ -91,8 +91,8 @@ export function termsSections(): LegalSection[] {
           items: [
             `Cancel at least ${BOOKING.cancellationNoticeHours} hours before your delivery date and your deposit is refunded in full. With less than ${BOOKING.cancellationNoticeHours} hours' notice, the deposit is forfeited.`,
             "To change your dates, contact us as early as you can. Changes depend on availability.",
-            "Weather before delivery: if severe weather, a burn ban or another safety problem is expected, contact us and we will work with you to reschedule. Cedar Soak decides, at its sole discretion, whether conditions justify cancelling or rescheduling a rental.",
-            "Once the tub has been delivered, the rental price is not refundable for any reason, including weather, a burn ban, or nights you choose not to use.",
+            "Weather before delivery: if severe weather, a burn ban or another safety problem is expected, we will first work with you to reschedule. A refund is a last resort, offered only if we cannot reschedule your rental. Cedar Soak decides, at its sole discretion, whether conditions justify rescheduling or cancelling.",
+            "Weather during your rental: once the tub has been delivered, we do not offer refunds for severe weather, a burn ban, or nights you choose not to use. We may, at our discretion, offer a rain check toward a future rental.",
             "After pickup, the damage deposit is refunded, less the cost of any loss or damage beyond normal wear, as described in the Rental Agreement. Refunds go back to the original payment method; your bank may take several business days to show them.",
           ],
         },

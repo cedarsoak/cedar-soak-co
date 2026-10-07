@@ -6,7 +6,7 @@
 
 import { BOOKING } from "./booking-config";
 
-export const AGREEMENT_VERSION = "2026-09-29";
+export const AGREEMENT_VERSION = "2026-10-07";
 export const AGREEMENT_TITLE = "Hot Tub Trailer Rental Agreement, Release of Liability, Assumption of Risk, and Towing Addendum";
 
 export type Block = { type: "p"; text: string } | { type: "ul"; items: string[] } | { type: "h"; text: string };
@@ -154,7 +154,7 @@ export function agreementSections(): AgreementSection[] {
     },
     {
       id: "s8",
-      title: "8. Equipment Damage, Deposit, and Cancellation",
+      title: "8. Equipment Damage, Deposit, Cancellation, and Weather",
       initials: true,
       blocks: [
         {
@@ -163,7 +163,9 @@ export function agreementSections(): AgreementSection[] {
             `A ${depositText()} deposit holds the rental date and is applied toward accidental damage.`,
             "Renter is financially responsible for loss, theft, or damage to the Equipment during the rental period beyond normal wear and tear, including damage caused by guests, misuse, prohibited substances in the water, or improper burning. Charges that exceed the deposit will be billed to Renter and are due within 14 days.",
             "Cancellations require at least 48 hours’ notice before the rental start time. Cancellations with less notice forfeit the deposit.",
-            "CedarSoak may cancel or end a rental, without liability beyond a refund of amounts paid, for unsafe conditions, severe weather, a burn ban, or violation of this Agreement.",
+            "Weather before delivery. If severe weather, a burn ban, or other unsafe conditions are expected before the Equipment is delivered, CedarSoak will first work with Renter to reschedule the rental. A refund of amounts paid is a last resort, offered only if the rental cannot be rescheduled. CedarSoak decides, in its sole discretion, whether conditions justify rescheduling or cancelling.",
+            "Weather during the rental. Once the Equipment has been delivered, no refund will be given for severe weather, a burn ban, or nights Renter does not use. CedarSoak may, in its sole discretion, offer a rain check toward a future rental.",
+            "CedarSoak may cancel or end a rental for unsafe conditions, severe weather, a burn ban, or violation of this Agreement. CedarSoak’s liability for doing so will never exceed the amounts Renter has paid.",
           ],
         },
       ],
