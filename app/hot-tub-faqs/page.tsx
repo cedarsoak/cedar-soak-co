@@ -52,7 +52,7 @@ const FAQS = [
   },
   {
     q: "What happens if the weather is bad during my rental?",
-    a: "Our hot tubs are built to withstand outdoor conditions, and many customers enjoy them in cooler weather. If severe weather (e.g., storms) affects delivery or safety, we'll work with you to reschedule without penalty. Wood-fire models can even provide extra warmth in chilly conditions.",
+    a: "Our hot tubs are built to withstand outdoor conditions, and many customers enjoy them in cooler weather. If severe weather (e.g., storms) is expected before delivery, contact us and we'll work with you to reschedule. Once the tub has been delivered, rentals are non-refundable. Wood-fire models can even provide extra warmth in chilly conditions.",
   },
   {
     q: "Do you offer any add-ons or accessories with rentals?",

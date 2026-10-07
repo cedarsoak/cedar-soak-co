@@ -50,6 +50,11 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>&copy; {new Date().getFullYear()} Cedar Soak Co. All rights reserved.</span>
+          <nav className="footer-legal" aria-label="Legal">
+            <Link href="/liability-waiver">Liability Waiver</Link>
+            <Link href="/terms">Terms &amp; Conditions</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+          </nav>
           <span>Veteran owned &middot; Dayton, Ohio</span>
         </div>
       </div>
