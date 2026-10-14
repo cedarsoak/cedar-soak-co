@@ -21,6 +21,7 @@ export default function QuickCaptureForm() {
         body: JSON.stringify({
           firstName: formData.get("firstName"),
           email: formData.get("email"),
+          marketingOptIn: formData.get("marketingOptIn") === "on",
           website: formData.get("website"), // honeypot
         }),
       });
@@ -70,6 +71,10 @@ export default function QuickCaptureForm() {
         style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
         aria-hidden="true"
       />
+      <label className="consent-row" style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 13, lineHeight: 1.4, textAlign: "left" }}>
+        <input type="checkbox" name="marketingOptIn" style={{ marginTop: 3, flexShrink: 0 }} />
+        <span>Yes, send me occasional Cedar Soak news and offers by email. Unsubscribe anytime.</span>
+      </label>
       <button type="submit" className="btn btn-primary" disabled={status === "loading"}>
         {status === "loading" ? "Sending…" : "Get pricing & availability"}
       </button>

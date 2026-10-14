@@ -18,6 +18,7 @@ import {
 import { query, sql } from "./db";
 import { earliestBookableDate, isIsoDate, latestBookableDate, pickupDate } from "./dates";
 import { sendBookingConfirmedEmails, sendPaymentReceivedOwnerEmail, sendWaiverSignedCustomerEmail, sendWaiverSignedOwnerEmail } from "./emails";
+import { addLeadToBrevo } from "./brevo";
 import { accountLink } from "./customer-auth";
 import { applyAvailableCredits, availableCreditCents as creditFor, grantReferralCredit } from "./referrals";
 import { paymentIntentForInvoice, siteUrl } from "./stripe";
@@ -49,6 +50,8 @@ export interface BookingRequest {
   promoCode: string | null;
   /** Referral code from a past customer's share link (?ref=CS-XXXXX). */
   refCode: string | null;
+  /** Ticked the marketing consent box on the booking page. */
+  marketingOptIn: boolean;
 }
 
 const str = (v: unknown, max = 200) => (typeof v === "string" ? v.trim().slice(0, max) : "");
@@ -85,6 +88,7 @@ export function parseBookingRequest(body: Record<string, unknown>, opts: { requi
     referral: str(body.referral, 60) || null,
     promoCode: str(body.promoCode, 24).toUpperCase().replace(/[^A-Z0-9-]/g, "") || null,
     refCode: normalizeRef(str(body.refCode, 16)),
+    marketingOptIn: body.marketingOptIn === true,
   };
 
   if (opts.requireContact) {
@@ -299,6 +303,15 @@ export async function finalizeCheckoutSession(session: Stripe.Checkout.Session):
         updated_at = now()
       WHERE id = ${bookingId} RETURNING *`;
     const booking = mapBooking(rows[0]);
+    // Add the paid customer to Brevo's Booked list (and the marketing opt-in list only if they ticked the box).
+    await addLeadToBrevo({
+      email: booking.email,
+      firstName: booking.firstName,
+      lastName: booking.lastName,
+      phone: booking.phone,
+      marketingOptIn: rows[0].marketing_opt_in === true,
+      booked: true,
+    });
     const payments = await getPayments(booking.id);
     const waiverFile = (await getFiles(booking.id)).find((f) => f.kind === "waiver");
     const waiver = waiverFile ? await getFileWithData(waiverFile.id) : null;

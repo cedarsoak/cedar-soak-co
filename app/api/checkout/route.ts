@@ -31,6 +31,11 @@ export async function POST(request: Request) {
     });
     bookingId = booking.id;
 
+    // Remember the marketing consent choice; a failure here must never block checkout.
+    if (parsed.data.marketingOptIn) {
+      await sql`UPDATE bookings SET marketing_opt_in = true WHERE id = ${booking.id}`.catch((e) => console.error("marketing opt-in save error", e));
+    }
+
     const origin = new URL(request.url).origin;
     const { url } = await createCheckoutForBooking({
       booking,
