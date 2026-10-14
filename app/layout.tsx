@@ -1,12 +1,29 @@
 import type { Metadata } from "next";
-import { Fraunces, Work_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Work_Sans, IBM_Plex_Mono, Caveat } from "next/font/google";
+import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import "./globals.css";
+
+const cedarSoakDisplay = localFont({
+  src: [{ path: "../public/fonts/CedarSoakDisplay-Regular.woff2", weight: "400", style: "normal" }],
+  variable: "--font-cedar-soak",
+  display: "swap",
+});
 
 const fraunces = Fraunces({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-fraunces",
+  display: "swap",
+});
+
+// Handwritten-marker feel, used sparingly (e.g. the Afterglow page's price correction)
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-caveat",
   display: "swap",
 });
 
@@ -41,8 +58,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${workSans.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${workSans.variable} ${plexMono.variable} ${caveat.variable} ${cedarSoakDisplay.variable}`}
+    >
+      <body>
+        <LocalBusinessSchema />
+        {children}
+      </body>
+      <GoogleAnalytics gaId="G-Y6XFK54J0N" />
     </html>
   );
 }

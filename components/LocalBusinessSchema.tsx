@@ -1,0 +1,85 @@
+// components/LocalBusinessSchema.tsx
+//
+// Site-wide LocalBusiness structured data. Renders a JSON-LD <script> tag.
+// Import and drop this into app/layout.tsx (once, site-wide) so it's present
+// on every page — this is what Google, Bing, and AI answer engines (AI
+// Overviews, Copilot, ChatGPT/Perplexity search) read to understand who you
+// are, where you serve, and how to contact you.
+
+export default function LocalBusinessSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.cedarsoak.co/#business",
+    name: "Cedar Soak Co.",
+    alternateName: "CedarSoak",
+    url: "https://www.cedarsoak.co",
+    logo: "https://www.cedarsoak.co/logo-horizontal.svg",
+    image: "https://www.cedarsoak.co/logo-horizontal.svg",
+    description:
+      "Cedar Soak Co. delivers handcrafted, wood-fired and electric cedar hot tubs to backyards, cabins, and celebrations across the Dayton, Ohio area. White-glove delivery, setup, and pickup included.",
+    telephone: "+1-937-604-6399",
+    email: "cedarsoak@gmail.com",
+    priceRange: "$549–$747",
+    currenciesAccepted: "USD",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Dayton",
+      addressRegion: "OH",
+      postalCode: "45419",
+      addressCountry: "US",
+    },
+    areaServed: [
+      { "@type": "City", name: "Dayton, OH" },
+      { "@type": "City", name: "Kettering, OH" },
+      { "@type": "City", name: "Beavercreek, OH" },
+      { "@type": "City", name: "Centerville, OH" },
+      { "@type": "City", name: "Miamisburg, OH" },
+      { "@type": "City", name: "Huber Heights, OH" },
+    ],
+    sameAs: [
+      "https://www.facebook.com/cedarsoakco",
+      "https://www.instagram.com/cedarsoak",
+    ],
+    makesOffer: [
+      {
+        "@type": "Offer",
+        name: "Fall Soak: 2-night cedar hot tub rental",
+        description:
+          "Two nights with a wood-fire, electric, or hybrid cedar hot tub. Includes delivery within 15 miles, setup, a personal walkthrough, and pickup.",
+        priceCurrency: "USD",
+        price: "549",
+        url: "https://www.cedarsoak.co/book?nights=2",
+      },
+      {
+        "@type": "Offer",
+        name: "Cedar Soak: 3-night cedar hot tub rental",
+        description:
+          "Three nights with a wood-fire, electric, or hybrid cedar hot tub. Includes delivery within 15 miles, setup, a personal walkthrough, and pickup.",
+        priceCurrency: "USD",
+        price: "747",
+        url: "https://www.cedarsoak.co/book?nights=3",
+      },
+      {
+        "@type": "Offer",
+        name: "Extra night (stays of 4+ nights)",
+        priceCurrency: "USD",
+        price: "249",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "249",
+          priceCurrency: "USD",
+          unitText: "NIGHT",
+        },
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}

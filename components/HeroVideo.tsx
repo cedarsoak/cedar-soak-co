@@ -126,7 +126,7 @@ export default function HeroVideo() {
       <div className="hero-media">
         <video
           ref={videoRef}
-          poster="/hero-poster.jpg"
+          poster="/cedar-soak-mobile-hot-tub-rental-dayton-hero.jpg"
           autoPlay
           muted
           loop
@@ -153,14 +153,20 @@ export default function HeroVideo() {
             Professionally set up, personally walked through, gone before Monday.
           </p>
 
-          <div className="price-chip">
-            <span className="amt">$747</span>
-            <span className="lbl">for a 3-night escape</span>
+          <div className="price-chips">
+            <a className="price-chip" href="/book?nights=2">
+              <span className="lbl">Fall Soak &middot; 2 nights</span>
+              <span className="amt">$549</span>
+            </a>
+            <a className="price-chip" href="/book?nights=3">
+              <span className="lbl">Cedar Soak &middot; 3 nights</span>
+              <span className="amt">$747</span>
+            </a>
           </div>
 
           <div className="cta-row">
             <a href="#book" className="btn btn-primary">
-              Request to book
+              Book your dates
             </a>
             <a href="#how-it-works" className="btn btn-ghost">
               See how it works

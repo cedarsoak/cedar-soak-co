@@ -1,10 +1,16 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import DateRangePicker from "./DateRangePicker";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function BookingForm() {
+type BookingFormProps = {
+  promoCode?: string;
+  source?: string;
+};
+
+export default function BookingForm({ promoCode, source }: BookingFormProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -27,7 +33,11 @@ export default function BookingForm() {
           heatPreference: formData.get("heatPreference"),
           location: formData.get("location"),
           message: formData.get("message"),
+          heardAbout: formData.get("heardAbout"),
           website: formData.get("website"), // honeypot
+          promoCode: promoCode || String(formData.get("promoCode") ?? "").trim().toUpperCase() || undefined,
+          source,
+          marketingOptIn: formData.get("marketingOptIn") === "on",
         }),
       });
       const data = await res.json();
@@ -74,10 +84,7 @@ export default function BookingForm() {
         </div>
       </div>
       <div className="field-row">
-        <div className="field">
-          <label htmlFor="dates">Preferred dates</label>
-          <input type="text" id="dates" name="dates" placeholder="e.g. Aug 15–18" />
-        </div>
+        <DateRangePicker name="dates" label="Preferred dates" />
         <div className="field">
           <label htmlFor="heat-select">Heat preference</label>
           <select id="heat-select" name="heatPreference" defaultValue="Wood-fire">
@@ -91,10 +98,41 @@ export default function BookingForm() {
         <label htmlFor="location">Delivery location (city)</label>
         <input type="text" id="location" name="location" placeholder="Kettering, OH" />
       </div>
+      <div className="field-row">
+        <div className="field">
+          <label htmlFor="heard-select">How&apos;d you find us?</label>
+          <select id="heard-select" name="heardAbout" defaultValue="" required>
+            <option value="" disabled>Choose one</option>
+            <option>Facebook/Instagram ad</option>
+            <option>TikTok</option>
+            <option>Instagram post</option>
+            <option>Facebook group</option>
+            <option>Nextdoor</option>
+            <option>Poster/flyer</option>
+            <option>Google</option>
+            <option>Friend/family</option>
+            <option>Wedding expo</option>
+            <option>Other</option>
+          </select>
+        </div>
+        {!promoCode && (
+          <div className="field">
+            <label htmlFor="promo">Promo code (optional)</label>
+            <input type="text" id="promo" name="promoCode" placeholder="e.g. SOAK4" autoCapitalize="characters" style={{ textTransform: "uppercase" }} />
+          </div>
+        )}
+      </div>
       <div className="field">
         <label htmlFor="msg">Anything else we should know?</label>
         <textarea id="msg" name="message" placeholder="Occasion, group size, questions..." />
       </div>
+      <label className="consent-row" style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 13, lineHeight: 1.4, marginBottom: 14 }}>
+        <input type="checkbox" name="marketingOptIn" style={{ marginTop: 3, flexShrink: 0 }} />
+        <span>
+          Yes, send me occasional Cedar Soak news and offers by email and text. Reply STOP to opt out of texts.
+          Message &amp; data rates may apply. Not required to book.
+        </span>
+      </label>
       {/* Honeypot field — hidden from real users, catches basic bots */}
       <input
         type="text"
@@ -104,6 +142,12 @@ export default function BookingForm() {
         style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
         aria-hidden="true"
       />
+      {promoCode && (
+        <div className="promo-applied">
+          Promo code <span className="code">{promoCode}</span>{" "}
+          is applied — you&apos;ll get one additional night free.
+        </div>
+      )}
       {status === "error" && (
         <p style={{ color: "var(--ember)", fontSize: 14, marginBottom: 14 }}>{errorMessage}</p>
       )}

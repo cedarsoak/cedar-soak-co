@@ -6,10 +6,12 @@ export default function StickyCta() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const hero = document.querySelector(".hero") as HTMLElement | null;
-    const threshold = hero ? hero.offsetTop + hero.offsetHeight : 400;
+    const getThreshold = () => {
+      const anchor = document.querySelector("#why") as HTMLElement | null;
+      return anchor ? anchor.offsetTop : 600;
+    };
 
-    const onScroll = () => setShow(window.scrollY > threshold);
+    const onScroll = () => setShow(window.scrollY > getThreshold());
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -17,11 +19,11 @@ export default function StickyCta() {
   return (
     <div className={`sticky-cta${show ? " show" : ""}`}>
       <div className="info">
-        Starting at
-        <strong>$747 / 3 nights</strong>
+        2 or 3 nights
+        <strong>$549 &middot; $747</strong>
       </div>
       <a href="#book" className="btn btn-primary">
-        Request to book
+        Book now
       </a>
     </div>
   );

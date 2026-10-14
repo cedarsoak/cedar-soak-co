@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { resend, CONTACT_TO_EMAIL, FROM_EMAIL, renderNotificationEmail } from "@/lib/resend";
+import { addLeadToBrevo } from "@/lib/brevo";
 
 export async function POST(request: Request) {
   try {
@@ -13,7 +14,11 @@ export async function POST(request: Request) {
       heatPreference,
       location,
       message,
+      heardAbout,
       website,
+      promoCode,
+      source,
+      marketingOptIn,
     } = body as {
       firstName?: string;
       lastName?: string;
@@ -23,7 +28,11 @@ export async function POST(request: Request) {
       heatPreference?: string;
       location?: string;
       message?: string;
+      heardAbout?: string;
       website?: string; // honeypot field
+      promoCode?: string;
+      source?: string;
+      marketingOptIn?: boolean;
     };
 
     if (website) {
@@ -42,6 +51,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "Enter a valid email address." }, { status: 400 });
     }
 
+    if (!heardAbout?.trim()) {
+
+      return NextResponse.json(
+
+        { ok: false, error: "Please tell us how you found us." },
+
+        { status: 400 }
+
+      );
+
+    }
+
+
     await resend.emails.send({
       from: FROM_EMAIL,
       to: CONTACT_TO_EMAIL,
@@ -54,10 +76,15 @@ export async function POST(request: Request) {
         "Preferred dates": dates,
         "Heat preference": heatPreference,
         "Delivery location": location,
+        "How they found us": heardAbout,
+        "Promo code": promoCode,
         Message: message,
-        Source: "Homepage Request to Book form",
+        "Marketing opt-in": marketingOptIn === true ? "Yes" : "No",
+        Source: source || "Homepage Request to Book form",
       }),
     });
+
+    await addLeadToBrevo({ email, firstName, lastName, phone, marketingOptIn: marketingOptIn === true });
 
     return NextResponse.json({ ok: true });
   } catch (error) {

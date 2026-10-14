@@ -45,15 +45,18 @@ export default function ContactPage() {
         <div className="wrap">
           <div className="form-wrap">
             <div className="form-side reveal">
-              <span className="eyebrow">Request to book</span>
-              <h2>Tell us about your escape.</h2>
-              <p>Share your preferred dates and location, and we&apos;ll confirm availability and delivery details within one business day.</p>
+              <span className="eyebrow">Send us a message</span>
+              <h2>Have a question first?</h2>
+              <p>Send us a note and we&apos;ll get back to you within one business day. Ready now? <a href="/book" style={{ color: "var(--ember-dark)", fontWeight: 600, textDecoration: "underline" }}>See live availability and book online</a>.</p>
               <div className="form-meta">
                 <div className="row">
                   <span className="dot"></span> Most weekends book 1&ndash;2 weeks in advance.
                 </div>
                 <div className="row">
-                  <span className="dot"></span> 3-night minimum, starting at $747.
+                  <span className="dot"></span> Fall Soak: 2 nights, $549 &middot; Cedar Soak: 3 nights, $747.
+                </div>
+                <div className="row">
+                  <span className="dot"></span> Standard minimum is 3 nights; seasonal offers and promotions may allow shorter stays.
                 </div>
               </div>
             </div>

@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { resend, CONTACT_TO_EMAIL, FROM_EMAIL, renderNotificationEmail } from "@/lib/resend";
+import { addLeadToBrevo } from "@/lib/brevo";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { firstName, email, website } = body as {
+    const { firstName, email, website, marketingOptIn } = body as {
       firstName?: string;
       email?: string;
+      marketingOptIn?: boolean;
       website?: string; // honeypot field — real users never fill this in
     };
 
@@ -35,9 +37,12 @@ export async function POST(request: Request) {
       html: renderNotificationEmail("New quick inquiry", {
         "First name": firstName,
         Email: email,
+        "Marketing opt-in": marketingOptIn === true ? "Yes" : "No",
         Source: "Homepage quick-capture form",
       }),
     });
+
+    await addLeadToBrevo({ email, firstName, marketingOptIn: marketingOptIn === true });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
