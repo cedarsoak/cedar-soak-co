@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { resend, CONTACT_TO_EMAIL, FROM_EMAIL, renderNotificationEmail } from "@/lib/resend";
+import { addLeadToBrevo } from "@/lib/brevo";
 
 export async function POST(request: Request) {
   try {
@@ -17,6 +18,7 @@ export async function POST(request: Request) {
       website,
       promoCode,
       source,
+      marketingOptIn,
     } = body as {
       firstName?: string;
       lastName?: string;
@@ -30,6 +32,7 @@ export async function POST(request: Request) {
       website?: string; // honeypot field
       promoCode?: string;
       source?: string;
+      marketingOptIn?: boolean;
     };
 
     if (website) {
@@ -76,9 +79,12 @@ export async function POST(request: Request) {
         "How they found us": heardAbout,
         "Promo code": promoCode,
         Message: message,
+        "Marketing opt-in": marketingOptIn === true ? "Yes" : "No",
         Source: source || "Homepage Request to Book form",
       }),
     });
+
+    await addLeadToBrevo({ email, firstName, lastName, phone, marketingOptIn: marketingOptIn === true });
 
     return NextResponse.json({ ok: true });
   } catch (error) {

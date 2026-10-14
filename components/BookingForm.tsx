@@ -37,6 +37,7 @@ export default function BookingForm({ promoCode, source }: BookingFormProps) {
           website: formData.get("website"), // honeypot
           promoCode: promoCode || String(formData.get("promoCode") ?? "").trim().toUpperCase() || undefined,
           source,
+          marketingOptIn: formData.get("marketingOptIn") === "on",
         }),
       });
       const data = await res.json();
@@ -125,6 +126,13 @@ export default function BookingForm({ promoCode, source }: BookingFormProps) {
         <label htmlFor="msg">Anything else we should know?</label>
         <textarea id="msg" name="message" placeholder="Occasion, group size, questions..." />
       </div>
+      <label className="consent-row" style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 13, lineHeight: 1.4, marginBottom: 14 }}>
+        <input type="checkbox" name="marketingOptIn" style={{ marginTop: 3, flexShrink: 0 }} />
+        <span>
+          Yes, send me occasional Cedar Soak news and offers by email and text. Reply STOP to opt out of texts.
+          Message &amp; data rates may apply. Not required to book.
+        </span>
+      </label>
       {/* Honeypot field — hidden from real users, catches basic bots */}
       <input
         type="text"

@@ -74,6 +74,7 @@ const SCHEMA: string[] = [
   `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS referred_by text`,
   `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS credit_cents int NOT NULL DEFAULT 0`,
   `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS credit_note text`,
+  `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS marketing_opt_in boolean NOT NULL DEFAULT false`,
   `CREATE TABLE IF NOT EXISTS referral_credits (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     email text NOT NULL,

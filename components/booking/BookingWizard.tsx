@@ -24,6 +24,7 @@ interface Contact {
   notes: string;
   referral: string;
   website: string; // honeypot
+  marketingOptIn: boolean;
 }
 
 interface QuoteResponse {
@@ -57,6 +58,7 @@ const emptyContact: Contact = {
   notes: "",
   referral: "",
   website: "",
+  marketingOptIn: false,
 };
 
 export default function BookingWizard({ cancelled = false }: { cancelled?: boolean }) {
@@ -534,6 +536,18 @@ export default function BookingWizard({ cancelled = false }: { cancelled?: boole
               placeholder="Gate codes, slope or soft ground, where the spigot is, venue contact…"
             />
           </div>
+          <label className="consent-row" style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 13, lineHeight: 1.4, margin: "4px 0 12px" }}>
+            <input
+              type="checkbox"
+              checked={contact.marketingOptIn}
+              onChange={(e) => setContact((c) => ({ ...c, marketingOptIn: e.target.checked }))}
+              style={{ marginTop: 3, flexShrink: 0 }}
+            />
+            <span>
+              Yes, send me occasional Cedar Soak news and offers by email and text. Reply STOP to opt out of texts.
+              Message &amp; data rates may apply. Not required to book.
+            </span>
+          </label>
           <input
             type="text"
             name="website"
